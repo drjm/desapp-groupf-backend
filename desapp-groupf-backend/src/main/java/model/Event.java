@@ -13,8 +13,15 @@ public class Event {
 	private String description;
 	private List<Long> idsSuggestionsRelation;
 	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+	private int mount;
 	
 	
+	public int getMount() {
+		return mount;
+	}
+	public void setMount(int mount) {
+		this.mount = mount;
+	}
 	public Long getId() {
 		return id;
 	}
