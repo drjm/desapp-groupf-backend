@@ -16,8 +16,8 @@ public class EconomicTest {
 	@Test
 	public void getAmountMaxTest()  {
         
-		User user = Mockito.mock(User.class);
-        Profile profile = Mockito.mock(Profile.class);
+		User user = mock(User.class);
+        Profile profile = mock(Profile.class);
 
         when(user.getProfile()).thenReturn(profile);
         when(profile.getAmuntMax()).thenReturn(10L);
