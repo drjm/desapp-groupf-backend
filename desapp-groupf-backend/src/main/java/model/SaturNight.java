@@ -5,7 +5,7 @@ import java.util.List;
 public class SaturNight extends Filter {
 
 	@Override
-	public List<User> filter(User user) {
+	public List<Event> filter(User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
