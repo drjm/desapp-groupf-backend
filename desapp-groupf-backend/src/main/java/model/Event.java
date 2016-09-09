@@ -13,14 +13,14 @@ public class Event {
 	private String description;
 	private List<Long> idsSuggestionsRelation;
 	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
-	private int mount;
+	private int price;
 	
 	
-	public int getMount() {
-		return mount;
+	public int getPrice() {
+		return price;
 	}
-	public void setMount(int mount) {
-		this.mount = mount;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	public Long getId() {
 		return id;
