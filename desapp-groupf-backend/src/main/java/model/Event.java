@@ -13,17 +13,17 @@ public class Event {
 	private String description;
 	private List<Long> idsSuggestionsRelation;
 	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
-	private int price;
+	private Long price;
 	private Boolean alone;
 	private Boolean inTwosome;
 	private Boolean inGruop;
 
 	
 	
-	public int getPrice() {
+	public Long getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 	public Long getId() {

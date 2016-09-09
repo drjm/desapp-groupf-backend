@@ -8,7 +8,7 @@ public class Profile {
 	private List<String> musicalGeneres;
 	private List<String> moviegeneres;
 	private List<String> foodTastes;
-	private Long aomuntMax;
+	private Long amuntMax;
 	private String conveyance;
 	
 	
@@ -36,11 +36,11 @@ public class Profile {
 	public void setFoodTastes(List<String> foodTastes) {
 		this.foodTastes = foodTastes;
 	}
-	public Long getAomuntMax() {
-		return aomuntMax;
+	public long getAmuntMax() {
+		return amuntMax;
 	}
-	public void setAomuntMax(Long aomuntMax) {
-		this.aomuntMax = aomuntMax;
+	public void setAmuntMax(long amuntMax) {
+		this.amuntMax = amuntMax;
 	}
 	public String getConveyance() {
 		return conveyance;
