@@ -14,6 +14,10 @@ public class Event {
 	private List<Long> idsSuggestionsRelation;
 	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
 	private int price;
+	private Boolean alone;
+	private Boolean inTwosome;
+	private Boolean inGruop;
+
 	
 	
 	public int getPrice() {
@@ -63,6 +67,24 @@ public class Event {
 	}
 	public void setSimpleDateFormat(SimpleDateFormat simpleDateFormat) {
 		this.simpleDateFormat = simpleDateFormat;
+	}
+	public Boolean getAlone() {
+		return alone;
+	}
+	public void setAlone(Boolean alone) {
+		this.alone = alone;
+	}
+	public Boolean getInTwosome() {
+		return inTwosome;
+	}
+	public void setInTwosome(Boolean inTwosome) {
+		this.inTwosome = inTwosome;
+	}
+	public Boolean getInGruop() {
+		return inGruop;
+	}
+	public void setInGruop(Boolean inGruop) {
+		this.inGruop = inGruop;
 	}
 	
 }
