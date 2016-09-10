@@ -2,9 +2,9 @@ package model;
 
 public class MoviesGeneres {
 	
-	public String TERROR = "TERROR";
-	public String ACCION = "ACCION";
-	public String COMEDIA = "COMEDIA";
+	public static String TERROR = "TERROR";
+	public static String ACCION = "ACCION";
+	public static String COMEDIA = "COMEDIA";
 	//AGREGAR MAS 
 	
 }

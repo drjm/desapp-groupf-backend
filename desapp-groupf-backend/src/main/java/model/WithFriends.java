@@ -8,6 +8,7 @@ public class WithFriends extends Filter {
 	@Override
 	public Boolean applyFilter(Event e, Object usersParam) {
 
+		@SuppressWarnings("unchecked")
 		List<User> users = (ArrayList<User>) usersParam;
 
 		Boolean isCompatible = true;

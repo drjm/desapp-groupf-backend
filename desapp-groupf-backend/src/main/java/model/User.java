@@ -4,6 +4,8 @@ public class User {
 	
 	private Profile profile;
 	private HandlerEvent handlerEvent;
+	
+	
 	public Profile getProfile() {
 		return profile;
 	}
