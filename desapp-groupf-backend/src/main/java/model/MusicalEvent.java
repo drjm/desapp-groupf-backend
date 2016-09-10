@@ -3,10 +3,16 @@ package model;
 public class MusicalEvent extends Event {
 
 	private String gender;
-	
+
+	public MusicalEvent(String gener) {
+
+		gender = gener;
+
+	}
+
 	@Override
 	public Boolean isCompatible(Profile profile) {
-		// TODO Auto-generated method stub
+
 		return profile.getMoviegeneres().contains(gender);
 	}
 
