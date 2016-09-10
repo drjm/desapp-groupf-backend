@@ -16,4 +16,10 @@ public class Economic extends Filter {
 		return eventToAmountMaxOfUser;
 	}
 
+	@Override
+	public Boolean applyFilter(Event e, Object profile) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

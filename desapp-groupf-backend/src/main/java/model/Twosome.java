@@ -1,13 +1,11 @@
 package model;
 
-import java.util.List;
-
 public class Twosome extends Filter {
 
 	@Override
-	public List<Event> filter(List<Event> listEvent, User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean applyFilter(Event e, Object user) {
+		Profile profilelocal = ((User) user).getProfile();
+		return e.getInTwosome() && e.getPrice() <= profilelocal.getAmuntMax() && e.isCompatible(profilelocal) ;
 	}
 
 }

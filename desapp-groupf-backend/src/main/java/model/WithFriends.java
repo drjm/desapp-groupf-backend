@@ -1,11 +1,10 @@
 package model;
 
-import java.util.List;
-
 public class WithFriends extends Filter {
 
+	
 	@Override
-	public List<Event> filter(List<Event> listEvent, User user) {
+	public Boolean applyFilter(Event e, Object profile) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class Event {
+public abstract class Event {
 
 	private Long id;
 	private String starTime;
@@ -86,5 +86,7 @@ public class Event {
 	public void setInGruop(Boolean inGruop) {
 		this.inGruop = inGruop;
 	}
+	
+	public abstract Boolean isCompatible(Profile profile);
 	
 }

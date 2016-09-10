@@ -8,9 +8,18 @@ public class Profile {
 	private List<String> musicalGeneres;
 	private List<String> moviegeneres;
 	private List<String> foodTastes;
+	private List<String> otherLikes;
+	public List<String> getOtherLikes() {
+		return otherLikes;
+	}
+	public void setOtherLikes(List<String> otherLikes) {
+		this.otherLikes = otherLikes;
+	}
+	public void setAmuntMax(Long amuntMax) {
+		this.amuntMax = amuntMax;
+	}
 	private Long amuntMax;
 	private String conveyance;
-	
 	
 	public Long getId() {
 		return id;
