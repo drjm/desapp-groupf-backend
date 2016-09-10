@@ -48,9 +48,6 @@ public class Profile {
 	public long getAmuntMax() {
 		return amuntMax;
 	}
-	public void setAmuntMax(long amuntMax) {
-		this.amuntMax = amuntMax;
-	}
 	public String getConveyance() {
 		return conveyance;
 	}
