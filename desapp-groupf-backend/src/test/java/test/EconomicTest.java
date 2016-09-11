@@ -1,13 +1,8 @@
 package test;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
 
+import factory.UserFactory;
 import model.Economic;
 import model.Event;
 import model.FoodEvent;
@@ -16,23 +11,25 @@ import model.MusicalEvent;
 import model.OtherEvent;
 import model.Profile;
 import model.User;
-import packageTestFactory.FactoryUser;
 
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EconomicTest {
-
+	
 	@Test
 	public void filterEconomic()  {
-        // create mocks
-		//FactoryUser fu = new FactoryUser();
-		User user = FactoryUser.getInstance(); //mock(User.class);
+		User user = UserFactory.getInstance();
         Profile profile = mock(Profile.class);
         Event musicalEvent = mock(MusicalEvent.class);
         Event foodEvent = mock(FoodEvent.class);
         Event movieEvent = mock(MovieEvent.class);
         Event otherEvent = mock(OtherEvent.class);
         
-        // creates the list for "economic" class
+     // creates the list for "economic" class
         List<Event> allEvents = new ArrayList<Event>();
         allEvents.add(musicalEvent);
         allEvents.add(foodEvent);
