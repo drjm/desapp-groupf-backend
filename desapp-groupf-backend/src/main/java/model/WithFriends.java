@@ -11,7 +11,7 @@ public class WithFriends extends Filter {
 		@SuppressWarnings("unchecked")
 		List<User> users = (ArrayList<User>) usersParam;
 
-		Boolean isCompatible = true;
+		Boolean isCompatible = e.getInGruop();
 
 		for (User user : users) {
 			isCompatible = isCompatible && e.isCompatible(user.getProfile());
