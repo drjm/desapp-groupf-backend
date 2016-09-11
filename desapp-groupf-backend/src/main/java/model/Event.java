@@ -19,6 +19,17 @@ public abstract class Event {
 	private Boolean inGruop;
 
 	
+	public Event(String statTime, String endTime, Date fecha, String descripcion, Long price, Boolean alone, Boolean inTwosome, Boolean inGroup){
+		
+		this.starTime = statTime;
+		this.endTime = endTime;
+		this.date = fecha;
+		this.description = descripcion;
+		this.price = price;
+		this.alone = alone;
+		this.inTwosome = inTwosome;
+		this.inGruop = inGroup;
+	}
 	
 	public Long getPrice() {
 		return price;

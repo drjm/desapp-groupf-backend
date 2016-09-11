@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import factory.EventFactory;
 import model.MusicalEvent;
 import model.MusicalGeneres;
 import model.Profile;
@@ -26,7 +27,7 @@ public class MusicalEventTest {
 		
 		when(profile.getMoviegeneres()).thenReturn(generes);
 	
-		MusicalEvent movieEvent = new MusicalEvent(MusicalGeneres.ROCK);
+		MusicalEvent movieEvent = EventFactory.eventMusicalGenderRock();
 		
 		assertTrue(movieEvent.isCompatible(profile));
 		
@@ -43,7 +44,7 @@ public class MusicalEventTest {
 		
 		when(profile.getMoviegeneres()).thenReturn(generes);
 	
-		MusicalEvent movieEvent = new MusicalEvent(MusicalGeneres.ROCK);
+		MusicalEvent movieEvent =  EventFactory.eventMusicalGenderRock();
 		
 		assertFalse(movieEvent.isCompatible(profile));
 		

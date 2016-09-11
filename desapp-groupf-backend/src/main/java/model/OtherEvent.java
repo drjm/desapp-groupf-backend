@@ -1,11 +1,26 @@
 package model;
 
+import java.util.Date;
+
 public class OtherEvent extends Event {
 
-	private String type;
+	private String otherLike; 
+	
+	public OtherEvent(String otherLike, String statTime, String endTime, Date fecha, String descripcion, Long price, Boolean alone,
+			Boolean inTwosome, Boolean inGroup) {
+		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup);
+		this.setOtherLike(otherLike);
+		
+	}
 	@Override
 	public Boolean isCompatible(Profile profile) {
-		return profile.getOtherLikes().contains(type);
+		return profile.getOtherLikes().contains(otherLike);
+	}
+	public String getOtherLike() {
+		return otherLike;
+	}
+	public void setOtherLike(String otherLike) {
+		this.otherLike = otherLike;
 	}
 
 }

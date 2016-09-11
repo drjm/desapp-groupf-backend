@@ -1,14 +1,16 @@
 package test;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
+import factory.EventFactory;
 import model.MovieEvent;
 import model.MoviesGeneres;
 import model.Profile;
@@ -26,7 +28,7 @@ public class MovieEventTest {
 		
 		when(profile.getMoviegeneres()).thenReturn(generes);
 	
-		MovieEvent movieEvent = new MovieEvent(MoviesGeneres.ACCION);
+		MovieEvent movieEvent = EventFactory.eventMovieGenderAccion();
 		
 		assertTrue(movieEvent.isCompatible(profile));
 		
@@ -43,7 +45,7 @@ public class MovieEventTest {
 		
 		when(profile.getMoviegeneres()).thenReturn(generes);
 	
-		MovieEvent movieEvent = new MovieEvent(MoviesGeneres.ACCION);
+		MovieEvent movieEvent = EventFactory.eventMovieGenderAccion();
 		
 		assertFalse(movieEvent.isCompatible(profile));
 		
