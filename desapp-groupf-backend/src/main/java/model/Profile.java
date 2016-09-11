@@ -9,6 +9,10 @@ public class Profile {
 	private List<String> moviegeneres;
 	private List<String> foodTastes;
 	private List<String> otherLikes;
+	private Long amuntMax;
+	private String conveyance;
+
+	
 	public List<String> getOtherLikes() {
 		return otherLikes;
 	}
@@ -18,8 +22,6 @@ public class Profile {
 	public void setAmuntMax(Long amuntMax) {
 		this.amuntMax = amuntMax;
 	}
-	private Long amuntMax;
-	private String conveyance;
 	
 	public Long getId() {
 		return id;
