@@ -19,14 +19,6 @@ public abstract class Event {
 	private Boolean inGruop;
 	private State state;
 
-	
-	public State getState() {
-		return state;
-	}
-
-	public void setState(State state) {
-		this.state = state;
-	}
 
 	public Event(String statTime, String endTime, Date fecha, String descripcion, Long price, Boolean alone, Boolean inTwosome, Boolean inGroup){
 		
@@ -38,7 +30,18 @@ public abstract class Event {
 		this.alone = alone;
 		this.inTwosome = inTwosome;
 		this.inGruop = inGroup;
+		this.state = new Actived();
 	}
+	
+	
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
+
 	
 	public Long getPrice() {
 		return price;
