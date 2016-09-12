@@ -17,8 +17,17 @@ public abstract class Event {
 	private Boolean alone;
 	private Boolean inTwosome;
 	private Boolean inGruop;
+	private State state;
 
 	
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
+
 	public Event(String statTime, String endTime, Date fecha, String descripcion, Long price, Boolean alone, Boolean inTwosome, Boolean inGroup){
 		
 		this.starTime = statTime;
@@ -102,4 +111,8 @@ public abstract class Event {
 	
 	public abstract Boolean couldBelong(Profile profile);
 	
+	public Boolean isAvaliable(){
+		return this.getState().isAvaliable();
+	}
+
 }
