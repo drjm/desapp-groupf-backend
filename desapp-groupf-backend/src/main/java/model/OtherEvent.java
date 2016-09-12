@@ -23,4 +23,9 @@ public class OtherEvent extends Event {
 		this.otherLike = otherLike;
 	}
 
+	@Override
+	public Boolean couldBelong(Profile profile) {
+		return ! profile.getOtherLikes().isEmpty();
+	}
+	
 }

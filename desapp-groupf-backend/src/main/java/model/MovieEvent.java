@@ -28,5 +28,9 @@ public class MovieEvent extends Event {
 		return profile.getMoviegeneres().contains(this.getGenere());
 	}
 
+	@Override
+	public Boolean couldBelong(Profile profile) {
+		return ! profile.getMoviegeneres().isEmpty();
+	}
 	
 }

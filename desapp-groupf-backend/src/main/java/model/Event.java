@@ -100,4 +100,6 @@ public abstract class Event {
 	
 	public abstract Boolean isCompatible(Profile profile);
 	
+	public abstract Boolean couldBelong(Profile profile);
+	
 }

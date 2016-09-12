@@ -19,4 +19,9 @@ public class MusicalEvent extends Event {
 		return profile.getMoviegeneres().contains(gender);
 	}
 
+	@Override
+	public Boolean couldBelong(Profile profile) {
+		return ! profile.getMusicalGeneres().isEmpty();
+	}
+	
 }

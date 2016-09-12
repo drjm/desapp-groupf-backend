@@ -26,4 +26,8 @@ public class FoodEvent extends Event {
 		this.typeFood = typeFood;
 	}
 
+	@Override
+	public Boolean couldBelong(Profile profile) {
+		return ! profile.getFoodTastes().isEmpty();
+	}
 }
