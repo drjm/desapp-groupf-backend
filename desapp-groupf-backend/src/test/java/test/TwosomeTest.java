@@ -27,7 +27,8 @@ public class TwosomeTest {
         when(event.getPrice()).thenReturn(new Long(10));
 		when(profile.getAmuntMax()).thenReturn(new Long(10));
         when(event.isCompatible(user.getProfile())).thenReturn(true);
-		
+		when(event.isAvaliable()).thenReturn(true);
+        
 		Twosome twosome = new Twosome();
 		
 		assertTrue(twosome.applyFilter(event, user));

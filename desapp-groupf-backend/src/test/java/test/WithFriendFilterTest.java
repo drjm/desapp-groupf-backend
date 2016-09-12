@@ -27,6 +27,8 @@ public class WithFriendFilterTest {
 		when(user1.getProfile()).thenReturn(profile);
 		when(user2.getProfile()).thenReturn(profile);
 		when(event.isCompatible(profile)).thenReturn(true);
+		when(event.isAvaliable()).thenReturn(true);
+
 		
 		List<User> users = new ArrayList<User>();
 		users.add(user2);
