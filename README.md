@@ -7,3 +7,5 @@ TP Desarrollo de Aplicaciones
 
 
 HEROKU: https://desapp-groupf.herokuapp.com/
+
+Mocks Pantallas Home-Busqueda de Eventos: https://moqups.com/mportillo@grupolpa.com/ssi8lToK/p:a13cd84ab
