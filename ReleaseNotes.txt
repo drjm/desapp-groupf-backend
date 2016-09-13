@@ -1,0 +1,26 @@
+---------------------------------------------------------------------
+TAG ENTREGA1
+---------------------------------------------------------------------
+NEW FEATURES (lo que están entregando y está funcionando):
+
+* Creación de repositorios
+* Configuración en Travis
+* Estado de build en verde
+* Configrar el proyecto en https://www.codacy.com
+* Coverage al 90% - Codacy
+* Diagrama UML (en /doc)
+* 2 Mockup de las ventanas de la aplicación Home - Busqueda de Eventos (https://moqups.com/ o https://balsamiq.com/ )
+* Deploy automático utlizando HEROKU o cualquiera similar
+TAG en GitHub
+* Modelo de objetos completo e implementado
+* Clean Code según la materia (todo en Ingles)
+* Testing según las pautas de la materia
+
+
+NOTES (ej: funcionalidad que falta, alguna consideración especial):
+* Pantalla prototipo del uso de la API de gmaps (mostrar puntos en un mapa)
+* Faltan algunas cosas del modelo.
+* Agregar mas Tests Unitarios
+
+
+KNOWN ISSUES
