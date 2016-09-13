@@ -11,6 +11,7 @@ public class Profile {
 	private List<String> otherLikes;
 	private Long amuntMax;
 	private String conveyance;
+	private String startTime;
 
 	
 	public List<String> getOtherLikes() {
@@ -55,6 +56,12 @@ public class Profile {
 	}
 	public void setConveyance(String conveyance) {
 		this.conveyance = conveyance;
+	}
+	public String getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
 	}
 	
 	

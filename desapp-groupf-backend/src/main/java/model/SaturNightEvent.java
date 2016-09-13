@@ -7,7 +7,7 @@ import java.util.List;
 public class SaturNightEvent extends Event {
 
 	private List<Event> events;
-	
+
 	public SaturNightEvent(String statTime, String endTime, Date fecha, String descripcion, Long price, Boolean alone,
 			Boolean inTwosome, Boolean inGroup) {
 		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup);
@@ -18,19 +18,25 @@ public class SaturNightEvent extends Event {
 	public Boolean isCompatible(Profile profile) {
 
 		Boolean isCompatible = true;
-		
-		for(Event e: events)
-		{
-			isCompatible = isCompatible  && e.isCompatible(profile);
+
+		for (Event e : events) {
+			isCompatible = isCompatible && e.isCompatible(profile);
 		}
-		
+
 		return isCompatible;
 	}
 
 	@Override
 	public Boolean couldBelong(Profile profile) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Boolean couldBelong = true;
+
+		for (Event e : events) {
+			couldBelong = couldBelong && e.couldBelong(profile);
+		}
+
+		return couldBelong;
+
 	}
 
 }

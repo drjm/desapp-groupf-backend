@@ -118,4 +118,10 @@ public abstract class Event {
 		return this.getState().isAvaliable();
 	}
 
+
+	public boolean timeStartIn(Profile profile, String currentTime, String endTime2) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 }
