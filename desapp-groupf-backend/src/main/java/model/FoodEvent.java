@@ -30,4 +30,9 @@ public class FoodEvent extends Event {
 	public Boolean couldBelong(Profile profile) {
 		return ! profile.getFoodTastes().isEmpty();
 	}
+	
+	@Override
+	public void whereAddYou(User user) {
+		user.addFood(this.getTypeFood());
+	}
 }

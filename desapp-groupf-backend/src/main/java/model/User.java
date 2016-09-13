@@ -40,5 +40,30 @@ public class User {
 		this.handlerEvent = handlerEvent;
 	}
 	
-	
+	public void invited(Event event) {
+		this.getHandlerEvent().addPendingEvent(event);
+	}
+
+	public void acceptEvent(Event event) {
+		if (this.getHandlerEvent().getPendingEvents().contains(event)) {
+			this.getHandlerEvent().acceptEvent(event);
+			event.whereAddYou(this);
+		}
+	}
+
+	public void addFood(String food) {
+		this.getProfile().addFood(food);
+	}
+
+	public void addMovie(String movie) {
+		this.getProfile().addMovie(movie);
+	}
+
+	public void addMusic(String music) {
+		this.getProfile().addMusic(music);
+	}
+
+	public void addOther(String other) {
+		this.getProfile().addOther(other);
+	}
 }

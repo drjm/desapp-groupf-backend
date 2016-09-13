@@ -123,5 +123,7 @@ public abstract class Event {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	public abstract void whereAddYou(User user);
 
 }

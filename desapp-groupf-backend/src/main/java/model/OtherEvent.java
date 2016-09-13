@@ -28,4 +28,8 @@ public class OtherEvent extends Event {
 		return ! profile.getOtherLikes().isEmpty();
 	}
 	
+	@Override
+	public void whereAddYou(User user) {
+		user.addOther(this.getOtherLike());
+	}
 }

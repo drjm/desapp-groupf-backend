@@ -5,6 +5,14 @@ import java.util.List;
 public class HandlerEvent {
 	
 	private List<Event> events;
+	private List<Event> pendingEvents;
+	
+	public List<Event> getPendingEvents() {
+		return pendingEvents;
+	}
+	public void setPendingEvents(List<Event> pendingEvents) {
+		this.pendingEvents = pendingEvents;
+	}
 	private List<Filter> filters;
 	
 	public List<Event> getEvents() {
@@ -20,6 +28,12 @@ public class HandlerEvent {
 	public void setFilters(List<Filter> filters) {
 		this.filters = filters;
 	}
-	
-	
+	public void addPendingEvent(Event event){
+		this.getPendingEvents().add(event);
+	}
+	public void acceptEvent(Event event){
+		this.getPendingEvents().remove(event);
+		this.getEvents().add(event);
+		
+	}	
 }

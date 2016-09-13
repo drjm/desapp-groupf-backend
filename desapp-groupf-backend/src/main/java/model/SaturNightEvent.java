@@ -39,4 +39,11 @@ public class SaturNightEvent extends Event {
 
 	}
 
+	@Override
+	public void whereAddYou(User user) {
+		for (Event event : events) {
+		event.whereAddYou(user);
+		}
+	}
+
 }

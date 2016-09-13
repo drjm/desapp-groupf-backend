@@ -64,5 +64,20 @@ public class Profile {
 		this.startTime = startTime;
 	}
 	
+	public void addFood(String food){
+		this.getFoodTastes().add(food.toString());
+	}
 	
+	public void addMovie(String movie){
+		this.getMoviegeneres().add(movie.toString());
+	}
+	
+	public void addMusic(String music){
+		this.getMusicalGeneres().add(music.toString());
+	}
+	
+	
+	public void addOther(String other){
+		this.getOtherLikes().add(other.toString());
+	}
 }

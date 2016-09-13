@@ -33,4 +33,9 @@ public class MovieEvent extends Event {
 		return ! profile.getMoviegeneres().isEmpty();
 	}
 	
+	@Override
+	public void whereAddYou(User user) {
+		user.addMovie(this.getGenere());
+	}
+	
 }
