@@ -3,8 +3,9 @@ package model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Observable;
 
-public abstract class Event {
+public abstract class Event extends Observable {
 
 	private Long id;
 	private String starTime;
@@ -18,7 +19,7 @@ public abstract class Event {
 	private Boolean inTwosome;
 	private Boolean inGruop;
 	private State state;
-
+	private String stateMessage;
 
 	public Event(String statTime, String endTime, Date fecha, String descripcion, Long price, Boolean alone, Boolean inTwosome, Boolean inGroup){
 		
@@ -31,6 +32,7 @@ public abstract class Event {
 		this.inTwosome = inTwosome;
 		this.inGruop = inGroup;
 		this.state = new Actived();
+		this.setStateMessage("Tiene un nuevo evento asignado:" + descripcion);
 	}
 	
 	
@@ -45,6 +47,7 @@ public abstract class Event {
 	
 	public Long getPrice() {
 		return price;
+		
 	}
 	public void setPrice(Long price) {
 		this.price = price;
@@ -116,8 +119,18 @@ public abstract class Event {
 	
 	public Boolean isAvaliable(){
 		return this.getState().isAvaliable();
+		
 	}
-
+	
+	public void active(){
+		this.getState().active(this);
+	}
+	public void cancel(){
+		this.getState().cancel(this);
+	}
+	public void finish(){
+		this.getState().finish(this);
+	}
 
 	public boolean timeStartIn(Profile profile, String currentTime, String endTime2) {
 		// TODO Auto-generated method stub
@@ -125,5 +138,19 @@ public abstract class Event {
 	}
 	
 	public abstract void whereAddYou(User user);
+	
+	public void setChange(){
+		this.setChanged();
+	}
+
+
+	public String getStateMessage() {
+		return stateMessage;
+	}
+
+
+	public void setStateMessage(String mensajeEstado) {
+		this.stateMessage = mensajeEstado;
+	}
 
 }

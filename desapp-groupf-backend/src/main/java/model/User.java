@@ -1,14 +1,32 @@
 package model;
 
-public class User {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+
+public class User implements Observer{
 	
 	private Profile profile;
 	private HandlerEvent handlerEvent;
 	private String name;
 	private String surname;
 	private String nik;
+	private FriendHandler frienHandler;
+	private List<String> messages = new ArrayList<String>(); 
 	
-	
+	public List<String> getMessages() {
+		return messages;
+	}
+	public void setMessages(List<String> messages) {
+		this.messages = messages;
+	}
+	public FriendHandler getFrienHandler() {
+		return frienHandler;
+	}
+	public void setFrienHandler(FriendHandler frienHandler) {
+		this.frienHandler = frienHandler;
+	}
 	public String getName() {
 		return name;
 	}
@@ -42,6 +60,7 @@ public class User {
 	
 	public void invited(Event event) {
 		this.getHandlerEvent().addPendingEvent(event);
+		event.addObserver(this);
 	}
 
 	public void acceptEvent(Event event) {
@@ -66,4 +85,16 @@ public class User {
 	public void addOther(String other) {
 		this.getProfile().addOther(other);
 	}
+	public void update(Observable o, Object arg) {
+
+		Event event = (Event) o;
+		this.recivrMessage("El Evento: " + event.getId() + "fue suspendido por el organizador del mismo");
+		
+		
+	}
+	private void recivrMessage(String string) {
+
+		this.getMessages().add(string);
+	}
 }
+

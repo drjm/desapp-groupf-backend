@@ -8,4 +8,21 @@ public class Finished extends State {
 		return false;
 	}
 
+	@Override
+	public void active(Event event) {
+		return;
+	}
+
+	@Override
+	public void cancel(Event event) {
+		return;
+
+	}
+
+	@Override
+	public void finish(Event event) {
+		return;
+
+	}
+
 }
