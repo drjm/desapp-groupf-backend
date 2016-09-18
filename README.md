@@ -9,3 +9,6 @@ TP Desarrollo de Aplicaciones
 HEROKU: https://desapp-groupf.herokuapp.com/
 
 Mocks Pantallas Home-Busqueda de Eventos: https://moqups.com/mportillo@grupolpa.com/ssi8lToK/p:a13cd84ab
+
+
+Ejemplo de google maps: "https://github.com/meportillo/desapp-groupf-backend/blob/master/desapp-groupf-backend/src/main/webapp/mapExample.html"
