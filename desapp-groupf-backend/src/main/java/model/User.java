@@ -66,6 +66,7 @@ public class User implements Observer{
 	public void acceptEvent(Event event) {
 		if (this.getHandlerEvent().getPendingEvents().contains(event)) {
 			this.getHandlerEvent().acceptEvent(event);
+			event.addObserver(this);
 			event.whereAddYou(this);
 		}
 	}
@@ -95,6 +96,10 @@ public class User implements Observer{
 	private void recivrMessage(String string) {
 
 		this.getMessages().add(string);
+	}
+	
+	public void cancelEvent(Event event){
+		event.cancel();
 	}
 }
 

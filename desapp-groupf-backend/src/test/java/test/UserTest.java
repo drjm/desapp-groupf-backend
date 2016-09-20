@@ -26,6 +26,7 @@ public class UserTest {
 		juan.setHandlerEvent(handlerEvent);
 		
 		doNothing().when(handlerEvent).addPendingEvent(event);
+		doNothing().when(event).addObserver(juan);
 		
 		juan.invited(event);
 		verify(handlerEvent, times(1)).addPendingEvent(event);
@@ -44,6 +45,7 @@ public class UserTest {
 		when(handlerEvent.getPendingEvents()).thenReturn(list);
 		doNothing().when(handlerEvent).acceptEvent(event);
 		doNothing().when(event).whereAddYou(juan);
+		doNothing().when(event).addObserver(juan);
 		
 		juan.acceptEvent(event);
 		
@@ -103,5 +105,18 @@ public class UserTest {
 		
 		verify(profile, times(1)).addOther("other");
 	}
-
+	
+	@Test
+	public void cancelEvent(){
+		User user = new User();
+		Event event = mock(Event.class);
+		
+		doNothing().when(event).cancel();
+		
+		user.cancelEvent(event);
+		
+		verify(event, times(1)).cancel();
+	}
+	
+	
 }

@@ -1,7 +1,10 @@
 package test;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -13,6 +16,7 @@ import factory.EventFactory;
 import model.FoodEvent;
 import model.FoodTypes;
 import model.Profile;
+import model.User;
 
 public class FoodEventTest {
 
@@ -50,4 +54,46 @@ public class FoodEventTest {
 		
 	}
 	
+	@Test
+	public void couldBelongTrue(){
+		Profile profile = mock(Profile.class);
+		FoodEvent foodEvent = EventFactory.eventFoodCarne();
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<String> food= mock(ArrayList.class); 
+		
+		when(profile.getFoodTastes()).thenReturn(food);
+		when(food.isEmpty()).thenReturn(false);
+		
+		assertTrue(foodEvent.couldBelong(profile));
+		
+	}
+	
+	@Test
+	public void couldBelongFalse(){
+		Profile profile = mock(Profile.class);
+		FoodEvent foodEvent = EventFactory.eventFoodCarne();
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<String> food= mock(ArrayList.class); 
+		
+		when(profile.getFoodTastes()).thenReturn(food);
+		when(food.isEmpty()).thenReturn(true);
+		
+		assertFalse(foodEvent.couldBelong(profile));
+		
+	}
+	
+	@Test
+	public void whereAddYou(){
+		User user = mock(User.class);
+		FoodEvent event = EventFactory.eventFoodCarne();
+		
+		doNothing().when(user).addFood(event.getTypeFood());
+		
+		event.whereAddYou(user);
+		
+		verify(user, times(1)).addFood(event.getTypeFood());
+		
+	}
 }
