@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FriendHandler {
 
-	List<User> friends;
+	private List<User> friends;
 	
 	public List<User> getFriends() {
 		return friends;

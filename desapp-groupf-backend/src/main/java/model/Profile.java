@@ -65,19 +65,19 @@ public class Profile {
 	}
 	
 	public void addFood(String food){
-		this.getFoodTastes().add(food.toString());
+		this.getFoodTastes().add(food);
 	}
 	
 	public void addMovie(String movie){
-		this.getMoviegeneres().add(movie.toString());
+		this.getMoviegeneres().add(movie);
 	}
 	
 	public void addMusic(String music){
-		this.getMusicalGeneres().add(music.toString());
+		this.getMusicalGeneres().add(music);
 	}
 	
 	
 	public void addOther(String other){
-		this.getOtherLikes().add(other.toString());
+		this.getOtherLikes().add(other);
 	}
 }
