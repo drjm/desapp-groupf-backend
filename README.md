@@ -21,7 +21,7 @@ API REST METODOS Y EJEMPLOS PARA CORRER EN FORMA LOCAL:
 ************************************PROFILE************************************
 Post: 
 CREATE
-https://desapp-groupf.herokuapp.com/rest/profile/addprofile/mauro
+https://desapp-groupf.herokuapp.com/rest/profile/addprofile
 
 header:
 Content-Type: application/json
