@@ -11,27 +11,30 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import model.Event;
+import model.GenderMovie;
+import model.GenderMusical;
 import model.HandlerEvent;
+import model.OtherLike;
 import model.Profile;
+import model.TypeFood;
 import model.User;
 
 public class UserTest {
-	
+
 	@Test
 	public void invitedTest() {
 		HandlerEvent handlerEvent = mock(HandlerEvent.class);
 		User juan = new User();
 		Event event = mock(Event.class);
-		
+
 		juan.setHandlerEvent(handlerEvent);
-		
+
 		doNothing().when(handlerEvent).addPendingEvent(event);
-		doNothing().when(event).addObserver(juan);
-		
+
 		juan.invited(event);
 		verify(handlerEvent, times(1)).addPendingEvent(event);
 	}
-	
+
 	@Test
 	public void acceptEventTest() {
 		HandlerEvent handlerEvent = mock(HandlerEvent.class);
@@ -39,84 +42,77 @@ public class UserTest {
 		Event event = mock(Event.class);
 		ArrayList<Event> list = new ArrayList<Event>();
 		list.add(event);
-		
+
 		juan.setHandlerEvent(handlerEvent);
-		
+
 		when(handlerEvent.getPendingEvents()).thenReturn(list);
 		doNothing().when(handlerEvent).acceptEvent(event);
 		doNothing().when(event).whereAddYou(juan);
-		doNothing().when(event).addObserver(juan);
-		
+
 		juan.acceptEvent(event);
-		
+
 		verify(handlerEvent, times(1)).getPendingEvents();
 		verify(event, times(1)).whereAddYou(juan);
 	}
-	
+
 	@Test
 	public void addFood() {
 		User juan = new User();
-        Profile profile = mock(Profile.class);
-        
+		Profile profile = mock(Profile.class);
+
+		TypeFood food = new TypeFood("food");
 		
-		doNothing().when(profile).addFood("food");
-		
-		juan.setProfile(profile);		
-		juan.addFood("food");
-		
-		verify(profile, times(1)).addFood("food");
+		doNothing().when(profile).addFood(food);
+
+		juan.setProfile(profile);
+		juan.addFood(food);
+
+		verify(profile, times(1)).addFood(food);
 	}
-	
+
 	@Test
 	public void addMusic() {
 		User juan = new User();
-        Profile profile = mock(Profile.class);
-		
-		doNothing().when(profile).addMusic("rock");
-		
+		Profile profile = mock(Profile.class);
+
+		GenderMusical gender = new GenderMusical("rock");
+
+		doNothing().when(profile).addMusic(gender);
+
 		juan.setProfile(profile);
-		juan.addMusic("rock");
-		
-		verify(profile, times(1)).addMusic("rock");
+		juan.addMusic(gender);
+
+		verify(profile, times(1)).addMusic(gender);
 	}
-	
+
 	@Test
 	public void addMovie() {
 		User juan = new User();
-        Profile profile = mock(Profile.class);
+		Profile profile = mock(Profile.class);
+
+		GenderMovie gender = new GenderMovie("movie");
 		
-		doNothing().when(profile).addMovie("movie");
-		
+		doNothing().when(profile).addMovie(gender);
+
 		juan.setProfile(profile);
-		juan.addMovie("movie");
-		
-		verify(profile, times(1)).addMovie("movie");
+		juan.addMovie(gender);
+
+		verify(profile, times(1)).addMovie(gender);
 	}
-	
+
 	@Test
 	public void addOther() {
 		User juan = new User();
-        Profile profile = mock(Profile.class);
+		Profile profile = mock(Profile.class);
+
+		OtherLike other = new OtherLike("other");
 		
-		doNothing().when(profile).addOther("other");
-		
+		doNothing().when(profile).addOther(other);
+
 		juan.setProfile(profile);
-		juan.addOther("other");
-		
-		verify(profile, times(1)).addOther("other");
+		juan.addOther(other);
+
+		verify(profile, times(1)).addOther(other);
 	}
-	
-	@Test
-	public void cancelEvent(){
-		User user = new User();
-		Event event = mock(Event.class);
-		
-		doNothing().when(event).cancel();
-		
-		user.cancelEvent(event);
-		
-		verify(event, times(1)).cancel();
-	}
-	
-	
+
 }

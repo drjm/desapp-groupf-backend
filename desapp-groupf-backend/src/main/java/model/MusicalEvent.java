@@ -4,37 +4,50 @@ import java.util.Date;
 
 public class MusicalEvent extends Event {
 
-	private String gender;
+	private GenderMusical gender;
 
-	public String getGender() {
+	public MusicalEvent(GenderMusical gener, String statTime, String endTime, Date fecha, String descripcion,
+			Long price, Boolean alone, Boolean inTwosome, Boolean inGroup) {
+
+		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup);
+		gender = gener;
+
+	}
+
+	public MusicalEvent() {
+		super(null, null, null, null, null, null, null, null);
+
+	}
+
+	public GenderMusical getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(GenderMusical gender) {
 		this.gender = gender;
-	}
-
-	public MusicalEvent(String gener,String statTime, String endTime, Date fecha, String descripcion, Long price, Boolean alone, Boolean inTwosome, Boolean inGroup) {
-
-		super(statTime,  endTime, fecha, descripcion,  price, alone,inTwosome,inGroup);
-		gender = gener;
-
 	}
 
 	@Override
 	public Boolean isCompatible(Profile profile) {
 
-		return profile.getMoviegeneres().contains(gender);
+		boolean ret = false;
+
+		for (GenderMusical gm : profile.getMusicalGeneres()) {
+			ret = ret || gm.getName().equals(this.getGender().getName());
+		}
+		return ret;
+
+
 	}
 
 	@Override
 	public Boolean couldBelong(Profile profile) {
-		return ! profile.getMusicalGeneres().isEmpty();
+		return !profile.getMusicalGeneres().isEmpty();
 	}
-	
+
 	@Override
 	public void whereAddYou(User user) {
 		user.addMusic(this.getGender());
 	}
-	
+
 }

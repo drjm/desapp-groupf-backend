@@ -1,83 +1,110 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Profile {
-	
-	private Long id;
-	private List<String> musicalGeneres;
-	private List<String> moviegeneres;
-	private List<String> foodTastes;
-	private List<String> otherLikes;
-	private Long amuntMax;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "profile")
+public class Profile implements Serializable {
+
+	private static final long serialVersionUID = 1365365124943834617L;
+
+	private Integer idProfile;
+	private List<GenderMusical> musicalGeneres;
+	private List<GenderMovie> moviegeneres;
+	private List<TypeFood> foodTastes;
+	private List<OtherLike> otherLikes;
+	private Long amountMax;
 	private String conveyance;
 	private String startTime;
+	private String nik;
 
-	
-	public List<String> getOtherLikes() {
-		return otherLikes;
+	public Integer getIdProfile() {
+		return idProfile;
 	}
-	public void setOtherLikes(List<String> otherLikes) {
-		this.otherLikes = otherLikes;
+
+	public void setIdProfile(Integer idProfile) {
+		this.idProfile = idProfile;
 	}
-	public void setAmuntMax(Long amuntMax) {
-		this.amuntMax = amuntMax;
-	}
-	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public List<String> getMusicalGeneres() {
+
+	public List<GenderMusical> getMusicalGeneres() {
 		return musicalGeneres;
 	}
-	public void setMusicalGeneres(List<String> musicalGeneres) {
+
+	public void setMusicalGeneres(List<GenderMusical> musicalGeneres) {
 		this.musicalGeneres = musicalGeneres;
 	}
-	public List<String> getMoviegeneres() {
+
+	public List<GenderMovie> getMoviegeneres() {
 		return moviegeneres;
 	}
-	public void setMoviegeneres(List<String> moviegeneres) {
+
+	public void setMoviegeneres(List<GenderMovie> moviegeneres) {
 		this.moviegeneres = moviegeneres;
 	}
-	public List<String> getFoodTastes() {
+
+	public List<TypeFood> getFoodTastes() {
 		return foodTastes;
 	}
-	public void setFoodTastes(List<String> foodTastes) {
+
+	public void setFoodTastes(List<TypeFood> foodTastes) {
 		this.foodTastes = foodTastes;
 	}
-	public long getAmuntMax() {
-		return amuntMax;
+
+	public List<OtherLike> getOtherLikes() {
+		return otherLikes;
 	}
+
+	public void setOtherLikes(List<OtherLike> otherLikes) {
+		this.otherLikes = otherLikes;
+	}
+
+	public void setAmountMax(Long amuntMax) {
+		this.amountMax = amuntMax;
+	}
+
+	public long getAmountMax() {
+		return amountMax;
+	}
+
 	public String getConveyance() {
 		return conveyance;
 	}
+
 	public void setConveyance(String conveyance) {
 		this.conveyance = conveyance;
 	}
+
 	public String getStartTime() {
 		return startTime;
 	}
+
 	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
-	
-	public void addFood(String food){
+
+	public void addFood(TypeFood food) {
 		this.getFoodTastes().add(food);
 	}
-	
-	public void addMovie(String movie){
+
+	public void addMovie(GenderMovie movie) {
 		this.getMoviegeneres().add(movie);
 	}
-	
-	public void addMusic(String music){
+
+	public void addMusic(GenderMusical music) {
 		this.getMusicalGeneres().add(music);
 	}
-	
-	
-	public void addOther(String other){
+
+	public void addOther(OtherLike other) {
 		this.getOtherLikes().add(other);
+	}
+
+	public String getNik() {
+		return nik;
+	}
+
+	public void setNik(String nik) {
+		this.nik = nik;
 	}
 }

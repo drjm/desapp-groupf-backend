@@ -5,59 +5,73 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class User implements Observer{
-	
+public class User implements Observer {
+
+	private Integer idUser;
 	private Profile profile;
 	private HandlerEvent handlerEvent;
 	private String name;
 	private String surname;
 	private String nik;
 	private FriendHandler frienHandler;
-	private List<String> messages = new ArrayList<String>(); 
-	
+	private List<String> messages = new ArrayList<String>();
+
 	public List<String> getMessages() {
 		return messages;
 	}
+
 	public void setMessages(List<String> messages) {
 		this.messages = messages;
 	}
+
 	public FriendHandler getFrienHandler() {
 		return frienHandler;
 	}
+
 	public void setFrienHandler(FriendHandler frienHandler) {
 		this.frienHandler = frienHandler;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getSurname() {
 		return surname;
 	}
+
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+
 	public String getNik() {
 		return nik;
 	}
+
 	public void setNik(String nik) {
 		this.nik = nik;
 	}
+
 	public Profile getProfile() {
 		return profile;
 	}
+
 	public void setProfile(Profile profile) {
 		this.profile = profile;
 	}
+
 	public HandlerEvent getHandlerEvent() {
 		return handlerEvent;
 	}
+
 	public void setHandlerEvent(HandlerEvent handlerEvent) {
 		this.handlerEvent = handlerEvent;
 	}
-	
+
 	public void invited(Event event) {
 		this.getHandlerEvent().addPendingEvent(event);
 		event.addObserver(this);
@@ -66,40 +80,43 @@ public class User implements Observer{
 	public void acceptEvent(Event event) {
 		if (this.getHandlerEvent().getPendingEvents().contains(event)) {
 			this.getHandlerEvent().acceptEvent(event);
-			event.addObserver(this);
 			event.whereAddYou(this);
 		}
 	}
 
-	public void addFood(String food) {
+	public void addFood(TypeFood food) {
 		this.getProfile().addFood(food);
 	}
 
-	public void addMovie(String movie) {
+	public void addMovie(GenderMovie movie) {
 		this.getProfile().addMovie(movie);
 	}
 
-	public void addMusic(String music) {
+	public void addMusic(GenderMusical music) {
 		this.getProfile().addMusic(music);
 	}
 
-	public void addOther(String other) {
+	public void addOther(OtherLike other) {
 		this.getProfile().addOther(other);
 	}
+
 	public void update(Observable o, Object arg) {
 
 		Event event = (Event) o;
-		this.recivrMessage("El Evento: " + event.getId() + "fue suspendido por el organizador del mismo");
-		
-		
+		this.recivrMessage("El Evento: " + event.getIdEvent() + "fue suspendido por el organizador del mismo");
+
 	}
+
 	private void recivrMessage(String string) {
 
 		this.getMessages().add(string);
 	}
-	
-	public void cancelEvent(Event event){
-		event.cancel();
+
+	public Integer getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 }
-
