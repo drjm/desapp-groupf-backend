@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:cxf="http://cxf.apache.org/core"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+
+	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider" />
+
+	<bean id='jacksonProvider' class='org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider' />
+
+
+	<bean id="jaxbProviderProfile" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider" />
+
+	<bean id='jacksonProviderProfile' class='org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider' />
+
+
+	<!-- =========================== -->
+	<!-- =========Servicios ========= -->
+	<!-- =========================== <jaxrs:server id="utilitites"> <jaxrs:serviceBeans> 
+		<ref bean="utilitiesRest" /> </jaxrs:serviceBeans> <jaxrs:extensionMappings> 
+		<entry key="json" value="application/json" /> <entry key="xml" value="application/xml" 
+		/> </jaxrs:extensionMappings> <jaxrs:providers> <ref bean="jaxbProvider" 
+		/> <ref bean="jacksonProvider" /> </jaxrs:providers> <jaxrs:features> <cxf:logging 
+		/> </jaxrs:features> </jaxrs:server> -->
+
+
+	<jaxrs:server id="profile">
+		<jaxrs:serviceBeans>
+			<ref bean="profileRest" />
+			<ref bean="eventRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+			<entry key="xml" value="application/xml" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<ref bean="jaxbProviderProfile" />
+			<ref bean="jacksonProviderProfile" />
+		</jaxrs:providers>
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
+
+
+	<!-- beans de Utilities -->
+
+	<bean id="services.place" class="service.UtilitiesService">
+		<property name="repository" ref="persistence.place.repository" />
+	</bean>
+	<bean id="services.general" class="service.GeneralService">
+		<property name="utilitiesService" ref="services.place" />
+		<!-- <property name="personService" ref="services.person" /> -->
+	</bean>
+
+	<bean id="utitlityDao" class="service.UtilitiesService">
+		<property name="repository" ref="persistence.place.repository" />
+	</bean>
+	<bean id="dao.utitlity" class="service.GeneralService">
+		<property name="utilitiesService" ref="utitlityDao" />
+	</bean>
+	<bean id="utilitiesRest" class="webservice.UtilitiesRest">
+		<property name="service" ref="dao.utitlity" />
+	</bean>
+
+	<!-- beans de Profile -->
+
+	<bean id="profileServiceId" class="service.ProfileService">
+		<property name="repository" ref="persistenceProfile" />
+	</bean>
+
+	<bean id="profileRest" class="webservice.ProfileRest">
+		<property name="profileService" ref="profileServiceId" />
+	</bean>
+
+	<!-- beans de Event -->
+	<bean id="eventServiceId" class="service.EventService">
+		<property name="repository" ref="persistenceEvent" />
+	</bean>
+
+	<bean id="eventRest" class="webservice.EventRest">
+		<property name="eventService" ref="eventServiceId" />
+	</bean>
+
+
+</beans>
