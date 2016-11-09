@@ -16,7 +16,7 @@ import service.ProfileService;
 
 @Path("/profile")
 public class ProfileRest {
-
+	
 	private ProfileService profileService;
 
 	public ProfileService getProfileService() {
@@ -33,7 +33,6 @@ public class ProfileRest {
 	@Produces("application/json")
 	public Profile addProfile(Profile profile) {
 		this.getProfileService().save(profile);
-
 		return profile;
 	}
 

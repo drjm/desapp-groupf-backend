@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -11,10 +12,10 @@ public class Profile implements Serializable {
 	private static final long serialVersionUID = 1365365124943834617L;
 
 	private Integer idProfile;
-	private List<GenderMusical> musicalGeneres;
-	private List<GenderMovie> moviegeneres;
-	private List<TypeFood> foodTastes;
-	private List<OtherLike> otherLikes;
+	private List<GenderMusical> musicalGeneres = new ArrayList<GenderMusical>();
+	private List<GenderMovie> moviegeneres = new ArrayList<GenderMovie>();
+	private List<TypeFood> foodTastes = new ArrayList<TypeFood>();
+	private List<OtherLike> otherLikes = new ArrayList<OtherLike>();
 	private Long amountMax;
 	private String conveyance;
 	private String startTime;
@@ -106,5 +107,14 @@ public class Profile implements Serializable {
 
 	public void setNik(String nik) {
 		this.nik = nik;
+	}
+
+	public String toString() {
+		String ret = "\n ------PROFILE------- \n{";
+		ret += "\n NIK: " + this.getNik();
+		ret += "\n Amount max: " + this.getAmountMax();
+		ret += "\n Conveyance: " + this.getConveyance();
+		ret += "\n}\n ------PROFILE-------";
+		return ret;
 	}
 }

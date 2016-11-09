@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 
-public abstract class Event extends Observable {
+public class Event extends Observable {
 
 	private Integer idEvent;
 	private String title;
@@ -13,7 +13,7 @@ public abstract class Event extends Observable {
 	private Date date;
 	private String description;
 	private List<Integer> idsSuggestionsRelation;
-
+	private Integer cantPerson;
 	private Long price;
 	private Boolean alone;
 	private Boolean inTwosome;
@@ -23,7 +23,7 @@ public abstract class Event extends Observable {
 	private Place place;
 
 	public Event(String statTime, String endTime, Date fecha, String descripcion, Long price, Boolean alone,
-			Boolean inTwosome, Boolean inGroup) {
+			Boolean inTwosome, Boolean inGroup, Integer cantPerson) {
 
 		this.starTime = statTime;
 		this.endTime = endTime;
@@ -34,6 +34,7 @@ public abstract class Event extends Observable {
 		this.inTwosome = inTwosome;
 		this.inGruop = inGroup;
 		this.state = new Actived();
+		this.cantPerson = 10;
 		this.setStateMessage("Tiene un nuevo evento asignado:" + descripcion);
 	}
 
@@ -126,9 +127,26 @@ public abstract class Event extends Observable {
 		this.inGruop = inGruop;
 	}
 
-	public abstract Boolean isCompatible(Profile profile);
+	public Boolean isCompatible(Profile profile) {
+		try {
+			throw new Exception("Implementar");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
-	public abstract Boolean couldBelong(Profile profile);
+	public Boolean couldBelong(Profile profile) {
+		try {
+			throw new Exception("Implementar");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
 
 	public Boolean isAvaliable() {
 		return this.getState().isAvaliable();
@@ -152,7 +170,14 @@ public abstract class Event extends Observable {
 		return true;
 	}
 
-	public abstract void whereAddYou(User user);
+	public void whereAddYou(User user) {
+		try {
+			throw new Exception("Implementar");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public void setChange() {
 		this.setChanged();
@@ -180,6 +205,14 @@ public abstract class Event extends Observable {
 
 	public void setPlace(Place place) {
 		this.place = place;
+	}
+
+	public Integer getCantPerson() {
+		return cantPerson;
+	}
+
+	public void setCantPerson(Integer cantPerson) {
+		this.cantPerson = cantPerson;
 	}
 
 }

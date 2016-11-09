@@ -10,7 +10,7 @@ public class SaturNightEvent extends Event {
 
 	public SaturNightEvent(String statTime, String endTime, Date fecha, String descripcion, Long price, Boolean alone,
 			Boolean inTwosome, Boolean inGroup) {
-		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup);
+		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null);
 		this.events = new ArrayList<Event>();
 	}
 

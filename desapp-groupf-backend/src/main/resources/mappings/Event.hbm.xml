@@ -18,6 +18,7 @@
 		<property name="inTwosome" />
 		<property name="inGruop" />
 		<property name="stateMessage" />
+		<property name="cantPerson" />
 		<one-to-one name="state" class="model.State" cascade="save-update"></one-to-one>
 		<one-to-one name="place" class="model.Place" cascade="save-update"></one-to-one>
 		<subclass name="model.FoodEvent" discriminator-value="FoodEvent">

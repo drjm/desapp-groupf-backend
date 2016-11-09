@@ -31,7 +31,6 @@ public class TypeFood implements Like{
 	}
 
 
-	@Override
 	public boolean isEquals(String name) {
 		return this.getName().equals(name);
 	}

@@ -8,13 +8,13 @@ public class OtherEvent extends Event {
 
 	public OtherEvent(OtherLike otherLike, String statTime, String endTime, Date fecha, String descripcion, Long price,
 			Boolean alone, Boolean inTwosome, Boolean inGroup) {
-		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup);
+		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null);
 		this.setOtherLike(otherLike);
 
 	}
 
 	public OtherEvent() {
-		super(null, null, null, null, null, null, null, null);
+		super(null, null, null, null, null, null, null, null, null);
 
 	}
 

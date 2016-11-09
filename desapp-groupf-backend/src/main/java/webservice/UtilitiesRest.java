@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 import model.Place;
 import service.GeneralService;
 
-@Path("/advamos")
+@Path("/utils")
 
 public class UtilitiesRest {
 

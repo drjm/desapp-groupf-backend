@@ -99,4 +99,11 @@ public class EventRest {
 		return event;
 	}
 
+	@GET
+	@Path("/filter/cantPerson/{cant}")
+	@Produces("application/json")
+	public List<Event> getEventByCantPerson(@PathParam("cant") final Integer cant) {
+		return this.getEventService().getEventByCantPerson(cant);
+	}
+
 }

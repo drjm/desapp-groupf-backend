@@ -9,14 +9,14 @@ public class MovieEvent extends Event {
 	public MovieEvent(GenderMovie genero, String statTime, String endTime, Date fecha, String descripcion, Long price,
 			Boolean alone, Boolean inTwosome, Boolean inGroup) {
 
-		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup);
+		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null);
 
 		this.genere = genero;
 
 	}
 
 	public MovieEvent() {
-		super(null, null, null, null, null, null, null, null);
+		super(null, null, null, null, null, null, null, null, null);
 	}
 
 	public GenderMovie getGenere() {
