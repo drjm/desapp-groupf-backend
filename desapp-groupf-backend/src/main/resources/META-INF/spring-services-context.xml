@@ -91,15 +91,9 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
 		<property name="eventService" ref="eventServiceId" />
 	</bean>
 
-<!--  	<bean name="aopLogging" class="aspects.AspectLogging" />
-
-	<aop:config>
-		<aop:aspect ref="aopLogging">
-			<aop:pointcut id="pointcut" expression="execution(* webservice.*.*(..))" />
-			<aop:around method="tiempoPasado" pointcut-ref="pointcut" />
-		</aop:aspect>
-	</aop:config>
-
--->
+	 <bean name="aopLogging" class="aspects.AspectLogging" /> <aop:config> 
+		<aop:aspect ref="aopLogging"> <aop:pointcut id="pointcut" expression="execution(* 
+		webservice.*.*(..))" /> <aop:around method="tiempoPasado" pointcut-ref="pointcut" 
+		/> </aop:aspect> </aop:config> 
 
 </beans>
