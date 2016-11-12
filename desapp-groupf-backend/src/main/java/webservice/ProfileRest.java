@@ -68,7 +68,7 @@ public class ProfileRest {
 
 	}
 
-	@PUT
+	@POST
 	@Path("/updateprofile")
 	@Consumes("application/json")
 	@Produces("application/json")
