@@ -6,15 +6,21 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 @XmlRootElement(name = "profile")
 public class Profile implements Serializable {
 
 	private static final long serialVersionUID = 1365365124943834617L;
 
 	private Integer idProfile;
+	@JsonProperty("musicalGeneres")
 	private List<GenderMusical> musicalGeneres = new ArrayList<GenderMusical>();
+	@JsonProperty("moviegeneres")
 	private List<GenderMovie> moviegeneres = new ArrayList<GenderMovie>();
+	@JsonProperty("foodTastes")
 	private List<TypeFood> foodTastes = new ArrayList<TypeFood>();
+	@JsonProperty("otherLikes")
 	private List<OtherLike> otherLikes = new ArrayList<OtherLike>();
 	private Long amountMax;
 	private String conveyance;

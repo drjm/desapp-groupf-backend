@@ -9,6 +9,9 @@ public class OtherLike implements Like {
 		this.name = string;
 	}
 
+	public OtherLike() {
+	}
+
 	 
 	public Integer getId() {
 		return this.id;

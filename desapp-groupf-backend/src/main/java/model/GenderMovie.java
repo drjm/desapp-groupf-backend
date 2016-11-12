@@ -9,6 +9,9 @@ public class GenderMovie implements Like{
 		this.name = aCCION;
 	}
 
+	public GenderMovie() {
+	}
+
 	 
 	public Integer getId() {
 		return this.id;

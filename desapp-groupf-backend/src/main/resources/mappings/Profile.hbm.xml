@@ -13,22 +13,22 @@
 		<property name="amountMax" />
 		<list name="musicalGeneres" lazy="false">
 			<key column="musicalGenID" />
-			<list-index column="id" />
+			<list-index column="idProfile" />
 			<one-to-many class="model.GenderMusical" />
 		</list>
 		<list name="moviegeneres" lazy="false">
 			<key column="movieGenID" />
-			<list-index column="id" />
+			<list-index column="idProfile" />
 			<one-to-many class="model.GenderMovie" />
 		</list>
 		<list name="foodTastes" lazy="false">
 			<key column="foodGenID" />
-			<list-index column="id" />
+			<list-index column="idProfile" />
 			<one-to-many class="model.TypeFood" />
 		</list>
 		<list name="otherLikes" lazy="false">
 			<key column="otherGenID" />
-			<list-index column="id" />
+			<list-index column="idProfile" />
 			<one-to-many class="model.OtherLike" />
 		</list>
 	</class>
