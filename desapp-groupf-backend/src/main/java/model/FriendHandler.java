@@ -26,7 +26,7 @@ public class FriendHandler {
 	public void eventInvite(Event event, List<User>friends){
 		  Iterator<User> itr = friends.iterator();
 	      while(itr.hasNext()) {
-	         (itr.next()).invited(event);
+//	         (itr.next()).invited(event);
 	      }
 	}
 	

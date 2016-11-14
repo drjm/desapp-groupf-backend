@@ -27,6 +27,10 @@ public class Profile implements Serializable {
 	private String startTime;
 	private String nik;
 
+	public Profile() {
+
+	}
+
 	public Integer getIdProfile() {
 		return idProfile;
 	}

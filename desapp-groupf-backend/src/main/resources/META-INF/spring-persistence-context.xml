@@ -102,9 +102,15 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 
-	<!-- _____________ BEAN PROFILE _____________ -->
+	<!-- _____________ BEAN EVENT _____________ -->
 
 	<bean id="persistenceEvent" class="persistence.EventRepository">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+
+	<!-- _____________ BEAN USER _____________ -->
+
+	<bean id="persistenceUser" class="persistence.UserRepository">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 

@@ -37,6 +37,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
 		<jaxrs:serviceBeans>
 			<ref bean="profileRest" />
 			<ref bean="eventRest" />
+			<ref bean="userRest"/>	
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />
@@ -91,9 +92,25 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
 		<property name="eventService" ref="eventServiceId" />
 	</bean>
 
-	 <bean name="aopLogging" class="aspects.AspectLogging" /> <aop:config> 
-		<aop:aspect ref="aopLogging"> <aop:pointcut id="pointcut" expression="execution(* 
-		webservice.*.*(..))" /> <aop:around method="tiempoPasado" pointcut-ref="pointcut" 
-		/> </aop:aspect> </aop:config> 
+	<!-- beans de User  -->
+	<bean id="userServiceId" class="service.UserService">
+		<property name="repository" ref="persistenceUser" />
+	</bean>
+
+	<bean id="userRest" class="webservice.UserRest">
+		<property name="userService" ref="userServiceId" />
+	</bean>
+
+
+
+	<!-- BEANS DE ASPECOS LOGGING -->
+	<bean name="aopLogging" class="aspects.AspectLogging" />
+	<aop:config>
+		<aop:aspect ref="aopLogging">
+			<aop:pointcut id="pointcut" expression="execution(* 
+		webservice.*.*(..))" />
+			<aop:around method="tiempoPasado" pointcut-ref="pointcut" />
+		</aop:aspect>
+	</aop:config>
 
 </beans>
