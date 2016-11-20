@@ -1,7 +1,5 @@
 package webservice;
 
-import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -9,8 +7,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
-import model.Profile;
 import model.User;
 import service.UserService;
 
@@ -30,79 +28,76 @@ public class UserRest {
 	@Path("/addUser")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public User addUser(User User) {
-		this.getUserService().save(User);
-		return User;
-	}
-
-	@POST
-	@Path("/addUserNik/{nik}")
-	@Produces("application/json")
-	public User addUser(@PathParam("nik") final String nik) {
-		User user = new User();
-		Profile p = new Profile();
-		p.setAmountMax(new Long(100));
-		p.setConveyance("a Pie");
-		p.setNik(nik);
-		p.setStartTime("");
-		user.setProfile(p);
-		user.setNik(nik);
+	public Response addUser(User user) {
 		this.getUserService().save(user);
-		return user;
+		return Response.ok(user).build();
 	}
 
 	@GET
 	@Path("/users")
 	@Produces("application/json")
-	public List<User> Users() {
+	public Response Users() {
 
-		return this.getUserService().retriveAll();
+		return Response.ok(this.getUserService().retriveAll()).build();
 
 	}
 
 	@DELETE
 	@Path("/deleteUser/{id}")
 	@Produces("application/json")
-	public String deleteUser(@PathParam("id") final Integer id) {
+	public Response deleteUser(@PathParam("id") final Integer id) {
 
 		try {
 			User toDelete = this.getUserService().getById(id);
 			this.getUserService().delete(toDelete);
 		} catch (Exception e) {
-			return "Id not found";
+			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-		return "Delete Ok";
+		return Response.ok("Se borro correctamente...").build();
 	}
 
 	@GET
 	@Path("/getUser/{id}")
 	@Produces("application/json")
-	public User getUser(@PathParam("id") final Integer id) {
+	public Response getUser(@PathParam("id") final Integer id) {
 
-		return this.getUserService().getById(id);
+		User ret;
+		try {
+			ret = this.getUserService().getById(id);
+		} catch (Exception e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+		return Response.ok(ret).build();
 
 	}
 
 	@GET
 	@Path("/getUserByEmail/{mail}")
 	@Produces("application/json")
-	public User getUserByEmail(@PathParam("mail") final String mail) {
+	public Response getUserByEmail(@PathParam("mail") final String mail) {
+		User ret;
 		try {
-			return this.getUserService().getUserByEmail(mail);
+			ret = this.getUserService().getUserByEmail(mail);
 		} catch (Exception e) {
-			return null;
+			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-
+		return Response.ok(ret).build();
 	}
 
 	@POST
 	@Path("/updateUser")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public User updateUser(User User) {
+	public Response updateUser(User User) {
 
-		this.getUserService().update(User);
-		return this.getUserService().getById(User.getIdUser());
+		User ret;
+		try {
+			this.getUserService().update(User);
+			ret = this.getUserService().getById(User.getIdUser());
+		} catch (Exception e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+		return Response.ok(ret).build();
 	}
 
 }

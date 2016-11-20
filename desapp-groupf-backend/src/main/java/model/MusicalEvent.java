@@ -1,30 +1,29 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class MusicalEvent extends Event {
 
-	private GenderMusical gender;
+	private GenderMusical genderMusical;
+	public MusicalEvent(GenderMusical gener, String statTime, String endTime, LocalDate fecha, String descripcion,
+			Long price, Boolean alone, Boolean inTwosome, Boolean inGroup, Place place) {
 
-	public MusicalEvent(GenderMusical gener, String statTime, String endTime, Date fecha, String descripcion,
-			Long price, Boolean alone, Boolean inTwosome, Boolean inGroup) {
-
-		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null);
-		gender = gener;
+		super(statTime, endTime, null, descripcion, price, alone, inTwosome, inGroup, null, place);
+		this.genderMusical = gener;
 
 	}
 
 	public MusicalEvent() {
-		super(null, null, null, null, null, null, null, null, null);
+		super(null, null, null, null, null, null, null, null, null,null);
 
 	}
 
 	public GenderMusical getGender() {
-		return gender;
+		return genderMusical;
 	}
 
 	public void setGender(GenderMusical gender) {
-		this.gender = gender;
+		this.genderMusical = gender;
 	}
 
 	@Override
@@ -49,5 +48,4 @@ public class MusicalEvent extends Event {
 	public void whereAddYou(User user) {
 		user.addMusic(this.getGender());
 	}
-
 }

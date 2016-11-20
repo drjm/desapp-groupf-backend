@@ -1,16 +1,19 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Observable;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Event extends Observable {
 
 	private Integer idEvent;
 	private String title;
 	private String starTime;
 	private String endTime;
-	private Date date;
+	private LocalDate date;
 	private String description;
 	private List<Integer> idsSuggestionsRelation;
 	private Integer cantPerson;
@@ -22,8 +25,8 @@ public class Event extends Observable {
 	private String stateMessage;
 	private Place place;
 
-	public Event(String statTime, String endTime, Date fecha, String descripcion, Long price, Boolean alone,
-			Boolean inTwosome, Boolean inGroup, Integer cantPerson) {
+	public Event(String statTime, String endTime, LocalDate fecha, String descripcion, Long price, Boolean alone,
+			Boolean inTwosome, Boolean inGroup, Integer cantPerson, Place placeP) {
 
 		this.starTime = statTime;
 		this.endTime = endTime;
@@ -35,6 +38,7 @@ public class Event extends Observable {
 		this.inGruop = inGroup;
 		this.state = new Actived();
 		this.cantPerson = 10;
+		this.place = placeP;
 		this.setStateMessage("Tiene un nuevo evento asignado:" + descripcion);
 	}
 
@@ -79,11 +83,11 @@ public class Event extends Observable {
 		this.endTime = endTime;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

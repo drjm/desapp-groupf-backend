@@ -16,6 +16,15 @@ public class Place implements Serializable {
 	@XmlElement
 	private String address;
 
+	public Place() {
+
+	}
+
+	public Place(String name, String address) {
+		this.name = name;
+		this.address = address;
+	}
+
 	public String getName() {
 		return name;
 	}

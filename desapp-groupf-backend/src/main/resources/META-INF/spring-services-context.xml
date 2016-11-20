@@ -101,6 +101,16 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
 		<property name="userService" ref="userServiceId" />
 	</bean>
 
+	
+  <!-- BEANS DE initialize -->
+	<bean id="initalize" class="service.Initializer">
+	<constructor-arg>
+		<list>
+		<ref bean="eventServiceId"></ref>
+		</list>
+	</constructor-arg>
+	</bean>
+	
 
 
 	<!-- BEANS DE ASPECOS LOGGING -->

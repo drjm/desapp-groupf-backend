@@ -9,6 +9,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 import model.Event;
 import model.FoodEvent;
@@ -17,6 +21,7 @@ import model.MusicalEvent;
 import model.OtherEvent;
 import service.EventService;
 
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Path("/event")
 public class EventRest {
 
@@ -33,8 +38,19 @@ public class EventRest {
 	@GET
 	@Path("/events")
 	@Produces("application/json")
-	public List<Event> events() {
+	public Response events() {
 
+		// List<Event> ret = this.getEventService().retriveAll();
+		return Response.ok(this.getEventService().retriveAll()).build();
+
+	}
+
+	@GET
+	@Path("/eventsL")
+	@Produces("application/json")
+	public List<Event> eventsL() {
+
+		// List<Event> ret = this.getEventService().retriveAll();
 		return this.getEventService().retriveAll();
 
 	}
@@ -42,68 +58,86 @@ public class EventRest {
 	@DELETE
 	@Path("/deleteevent/{id}")
 	@Produces("application/json")
-	public String deleteProfile(@PathParam("id") final Integer id) {
+	public Response deleteProfile(@PathParam("id") final Integer id) {
 
 		try {
 			Event toDelete = this.getEventService().getById(id);
 			this.getEventService().delete(toDelete);
 		} catch (Exception e) {
-			return "Id not found";
+			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-		return "Delete Ok";
+		return Response.status(Response.Status.OK).build();
 	}
 
 	@GET
 	@Path("/getEvent/{id}")
 	@Produces("application/json")
-	public Event getEvent(@PathParam("id") final Integer id) {
-		return this.getEventService().getById(id);
+	public Response getEvent(@PathParam("id") final Integer id) {
+		Event ret;
+		try {
+			ret = this.getEventService().getById(id);
+		} catch (Exception e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+		return Response.ok(ret).build();
 	}
 
 	@POST
 	@Path("/addfoodevent")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Event addFoodEvent(FoodEvent event) {
+	public Response addFoodEvent(FoodEvent event) {
+
 		this.getEventService().save(event);
-		return event;
+
+		return Response.ok(event).build();
 	}
 
 	@POST
 	@Path("/addmovieevent")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Event addMovieEvent(MovieEvent event) {
+	public Response addMovieEvent(MovieEvent event) {
 
 		this.getEventService().save(event);
-		return event;
+
+		return Response.ok(event).build();
 	}
 
 	@POST
 	@Path("/addmusicalevent")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Event addMusicalEvent(MusicalEvent event) {
+	public Response addMusicalEvent(MusicalEvent event) {
 
 		this.getEventService().save(event);
-		return event;
+
+		return Response.ok(event).build();
 	}
 
 	@POST
 	@Path("/addotherevent")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Event addOtherEvent(OtherEvent event) {
+	public Response addOtherEvent(OtherEvent event) {
 
 		this.getEventService().save(event);
-		return event;
+
+		return Response.ok(event).build();
 	}
 
 	@GET
 	@Path("/filter/cantPerson/{cant}")
 	@Produces("application/json")
-	public List<Event> getEventByCantPerson(@PathParam("cant") final Integer cant) {
-		return this.getEventService().getEventByCantPerson(cant);
+	public Response getEventByCantPerson(@PathParam("cant") final Integer cant) {
+		List<Event> events;
+		try {
+			events = this.getEventService().getEventByCantPerson(cant);
+		} catch (Exception e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+
+		}
+		return Response.ok(events).build();
 	}
 
 }

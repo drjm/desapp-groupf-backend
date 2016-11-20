@@ -30,8 +30,8 @@
 				cascade="save-update"></many-to-one>
 		</subclass>
 		<subclass name="model.MusicalEvent" discriminator-value="MusicalEvent">
-			<many-to-one name="gender" class="model.GenderMusical"
-				cascade="save-update"></many-to-one>
+			<many-to-one name="genderMusical" class="model.GenderMusical"
+				cascade="save-update"  lazy="false" fetch="select" ></many-to-one>
 		</subclass>
 		<subclass name="model.OtherEvent" discriminator-value="OtherEvent">
 			<many-to-one name="otherLike" class="model.OtherLike"

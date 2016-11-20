@@ -1,22 +1,22 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class MovieEvent extends Event {
 
 	private GenderMovie genere;
 
-	public MovieEvent(GenderMovie genero, String statTime, String endTime, Date fecha, String descripcion, Long price,
-			Boolean alone, Boolean inTwosome, Boolean inGroup) {
+	public MovieEvent(GenderMovie genero, String statTime, String endTime, LocalDate fecha, String descripcion,
+			Long price, Boolean alone, Boolean inTwosome, Boolean inGroup, Place place) {
 
-		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null);
+		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null, place);
 
 		this.genere = genero;
 
 	}
 
 	public MovieEvent() {
-		super(null, null, null, null, null, null, null, null, null);
+		super(null, null, null, null, null, null, null, null, null, null);
 	}
 
 	public GenderMovie getGenere() {

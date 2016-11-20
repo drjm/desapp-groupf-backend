@@ -3,16 +3,22 @@ package model;
 import java.io.Serializable;
 
 import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class GenderMusical implements Like, Serializable {
 
 	private static final long serialVersionUID = -7819380468207842602L;
-	private Integer id;
-	private String name;
+	@JsonProperty
+	private Integer idGMusical;
+	@JsonProperty
+	private String nameGMusical;
 
 	@JsonCreator
 	public GenderMusical(String name) {
-		this.name = name;
+		this.idGMusical = null;
+		this.nameGMusical = name;
 
 	}
 
@@ -20,23 +26,22 @@ public class GenderMusical implements Like, Serializable {
 
 	}
 
-	
 	public Integer getId() {
-		return this.id;
+		return this.idGMusical;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.idGMusical = id;
 
 	}
 
 	public String getName() {
 
-		return this.name;
+		return this.nameGMusical;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.nameGMusical = name;
 
 	}
 

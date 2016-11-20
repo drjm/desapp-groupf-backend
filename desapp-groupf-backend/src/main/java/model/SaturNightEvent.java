@@ -1,16 +1,16 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class SaturNightEvent extends Event {
 
 	private List<Event> events;
 
-	public SaturNightEvent(String statTime, String endTime, Date fecha, String descripcion, Long price, Boolean alone,
-			Boolean inTwosome, Boolean inGroup) {
-		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null);
+	public SaturNightEvent(String statTime, String endTime, LocalDate fecha, String descripcion, Long price, Boolean alone,
+			Boolean inTwosome, Boolean inGroup, Place place) {
+		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null , place);
 		this.events = new ArrayList<Event>();
 	}
 

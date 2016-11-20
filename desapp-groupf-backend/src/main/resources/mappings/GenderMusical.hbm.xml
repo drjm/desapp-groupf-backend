@@ -4,9 +4,9 @@
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
 	<class name="model.GenderMusical">
-		<id column="ID" name="id">
+		<id column="IDGMusical" name="idGMusical">
 			<generator class="native" />
 		</id>
-		<property name="name" />
+		<property name="nameGMusical" />
 	</class>
 </hibernate-mapping>
