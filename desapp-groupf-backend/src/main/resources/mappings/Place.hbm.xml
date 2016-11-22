@@ -4,7 +4,7 @@
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
 	<class name="model.Place">
-		<id column="ID" name="id">
+		<id column="IDPlace" name="idPlace">
 			<generator class="native" />
 		</id>
 		<property name="name" />

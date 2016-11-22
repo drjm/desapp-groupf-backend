@@ -92,7 +92,7 @@
 	<!-- ___________ Beans de negocio____________ -->
 	<!-- ________________________________________ -->
 
-	<bean id="persistence.place.repository" class="persistence.PlaceRepository">
+	<bean id="placeRepo" class="persistence.PlaceRepository">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 
@@ -114,6 +114,7 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 
+	
 
 
 </beans>

@@ -7,7 +7,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class GenderMusical implements Like, Serializable {
+public class GenderMusical implements Serializable {
 
 	private static final long serialVersionUID = -7819380468207842602L;
 	@JsonProperty
@@ -26,26 +26,23 @@ public class GenderMusical implements Like, Serializable {
 
 	}
 
-	public Integer getId() {
-		return this.idGMusical;
+	public Integer getIdGMusical() {
+		return idGMusical;
 	}
 
-	public void setId(Integer id) {
-		this.idGMusical = id;
-
+	public void setIdGMusical(Integer idGMusical) {
+		this.idGMusical = idGMusical;
 	}
 
-	public String getName() {
-
-		return this.nameGMusical;
+	public String getNameGMusical() {
+		return nameGMusical;
 	}
 
-	public void setName(String name) {
-		this.nameGMusical = name;
-
+	public void setNameGMusical(String nameGMusical) {
+		this.nameGMusical = nameGMusical;
 	}
 
 	public boolean isEquals(String name) {
-		return this.getName().equals(name);
+		return this.getNameGMusical().equals(name);
 	}
 }

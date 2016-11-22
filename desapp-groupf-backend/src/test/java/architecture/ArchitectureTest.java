@@ -1,11 +1,10 @@
 package architecture;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.reflections.Reflections;
 

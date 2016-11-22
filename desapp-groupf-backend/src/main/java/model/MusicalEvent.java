@@ -32,7 +32,7 @@ public class MusicalEvent extends Event {
 		boolean ret = false;
 
 		for (GenderMusical gm : profile.getMusicalGeneres()) {
-			ret = ret || gm.getName().equals(this.getGender().getName());
+			ret = ret || gm.getNameGMusical().equals(this.getGender().getNameGMusical());
 		}
 		return ret;
 

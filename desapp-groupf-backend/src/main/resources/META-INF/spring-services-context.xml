@@ -54,23 +54,11 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
 
 
 	<!-- beans de Utilities -->
-
-	<bean id="services.place" class="service.UtilitiesService">
-		<property name="repository" ref="persistence.place.repository" />
-	</bean>
-	<bean id="services.general" class="service.GeneralService">
-		<property name="utilitiesService" ref="services.place" />
-		<!-- <property name="personService" ref="services.person" /> -->
-	</bean>
-
-	<bean id="utitlityDao" class="service.UtilitiesService">
-		<property name="repository" ref="persistence.place.repository" />
-	</bean>
-	<bean id="dao.utitlity" class="service.GeneralService">
-		<property name="utilitiesService" ref="utitlityDao" />
+	<bean id="placeServiceId" class="service.PlaceService">
+		<property name="repository" ref="placeRepo" />
 	</bean>
 	<bean id="utilitiesRest" class="webservice.UtilitiesRest">
-		<property name="service" ref="dao.utitlity" />
+		<property name="placeService" ref="placeServiceId" />
 	</bean>
 
 	<!-- beans de Profile -->
