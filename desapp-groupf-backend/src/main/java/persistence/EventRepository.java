@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import model.Event;
+import model.User;
 
 public class EventRepository extends HibernateGenericDAO<Event> implements GenericRepository<Event> {
 
@@ -24,6 +25,23 @@ public class EventRepository extends HibernateGenericDAO<Event> implements Gener
 		Query query = session.createQuery(hql);
 		query.setParameter("cantperson", cantPerson);
 		return query.list();
+	}
+
+	public Event attendEvent(Integer idEvent, Integer idUser) {
+
+		Session session = this.getSessionFactory().getCurrentSession();
+		Event event = this.findById(idEvent);
+		String hql = "FROM User U WHERE U.idUser = :idUser";
+		Query query = session.createQuery(hql);
+		query.setParameter("idUser", idUser);
+		User user = (User) query.list().get(0);
+		event.addUser(user);
+		session.update(event);
+		session.flush();
+
+		System.out.println("AAAAAAAAAAAAAAAAA" + event.getUsers().size());
+		return event;
+
 	}
 
 }

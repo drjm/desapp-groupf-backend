@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import model.Event;
 import model.User;
 
 public class UserRepository extends HibernateGenericDAO<User> implements GenericRepository<User> {
@@ -19,6 +20,7 @@ public class UserRepository extends HibernateGenericDAO<User> implements Generic
 
 		return User.class;
 	}
+
 	@Transactional
 	public User getUserByEmailRepo(String mail) {
 
@@ -29,5 +31,20 @@ public class UserRepository extends HibernateGenericDAO<User> implements Generic
 		return (User) query.list().get(0);
 	}
 
+	@Transactional
+	public User attendEvent(Integer idUser, Integer idEvent) {
+
+		Session session = this.getSessionFactory().getCurrentSession();
+		User user = this.findById(idUser);
+		String hql = "FROM Event E WHERE E.idEvent = :idEvent";
+		Query query = session.createQuery(hql);
+		query.setParameter("idEvent", idEvent);
+		Event event = (Event) query.list().get(0);
+		user.attendEvent(event);
+		session.update(event);
+		session.update(user);
+		session.flush();
+		return user;
+	}
 
 }

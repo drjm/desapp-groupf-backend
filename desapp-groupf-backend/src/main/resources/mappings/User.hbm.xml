@@ -11,8 +11,12 @@
 		<property name="surname" />
 		<property name="nik" />
 		<property name="mail" />
-		<one-to-one name="profile" class="model.Profile"
-			lazy="false"></one-to-one>
+		<one-to-one name="profile" class="model.Profile" lazy="false"></one-to-one>
+		<list name="eventsToattend" lazy="false" >
+			<key column="idEventU" />
+			<list-index column="idUser" />
+			<one-to-many class="model.Event" />
+		</list>
 	</class>
 </hibernate-mapping>
                                    

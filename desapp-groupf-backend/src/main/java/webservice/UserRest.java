@@ -100,4 +100,20 @@ public class UserRest {
 		return Response.ok(ret).build();
 	}
 
+	@POST
+	@Path("/attendEvent/{idUser}/{idEvent}")
+	@Produces("application/json")
+	public Response updateUser(final @PathParam("idUser") Integer idUser, final @PathParam("idEvent") Integer idEvent) {
+
+		User ret;
+		try {
+			
+			ret = this.getUserService().attendEvent(idUser, idEvent);
+			
+		} catch (Exception e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+		return Response.ok(ret).build();
+	}
+
 }

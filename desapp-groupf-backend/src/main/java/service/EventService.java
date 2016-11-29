@@ -68,7 +68,7 @@ public class EventService extends GenericService<Event> implements Initialize {
 		this.getRepository().save(movieEvent);
 		this.getRepository().save(movieEvent1);
 		this.getRepository().save(movieEvent2);
-		
+
 		MovieEvent movieEvent3 = new MovieEvent(new GenderMovie(MoviesGeneres.CIENCIAFICCION), "21:00:00", "01:00:00",
 				LocalDate.of(2017, Month.DECEMBER, 15), "Star Wars: Episodio VIII", new Long(125), new Boolean(true),
 				new Boolean(true), new Boolean(true), null);
@@ -91,6 +91,10 @@ public class EventService extends GenericService<Event> implements Initialize {
 		this.getRepository().update(movieEvent3);
 		this.getRepository().update(movieEvent4);
 		this.getRepository().update(movieEvent5);
+	}
+	@Transactional
+	public Event addUserToEvent(Integer idEvent, Integer idUser) {
+		return ((Event) ((EventRepository) this.getRepository()).attendEvent(idEvent, idUser));
 	}
 
 }

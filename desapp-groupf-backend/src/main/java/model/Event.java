@@ -1,12 +1,16 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonBackReference;
 
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idEventT")
 public class Event extends Observable {
 
 	private Integer idEvent;
@@ -24,6 +28,8 @@ public class Event extends Observable {
 	private State state;
 	private String stateMessage;
 	private Place place;
+	@JsonBackReference
+	private List<User> users = new ArrayList<User>();
 
 	public Event(String statTime, String endTime, LocalDate fecha, String descripcion, Long price, Boolean alone,
 			Boolean inTwosome, Boolean inGroup, Integer cantPerson, Place placeP) {
@@ -40,6 +46,14 @@ public class Event extends Observable {
 		this.cantPerson = 10;
 		this.place = placeP;
 		this.setStateMessage("Tiene un nuevo evento asignado:" + descripcion);
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	public State getState() {
@@ -217,6 +231,10 @@ public class Event extends Observable {
 
 	public void setCantPerson(Integer cantPerson) {
 		this.cantPerson = cantPerson;
+	}
+
+	public void addUser(User user) {
+		this.getUsers().add(user);
 	}
 
 }

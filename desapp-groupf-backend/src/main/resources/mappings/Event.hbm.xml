@@ -3,7 +3,7 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
-	<class name="model.Event" discriminator-value="Event" abstract="true">
+	<class name="model.Event" discriminator-value="Event">
 		<id column="IDEvent" name="idEvent">
 			<generator class="native" />
 		</id>
@@ -21,22 +21,26 @@
 		<property name="cantPerson" />
 		<one-to-one name="state" class="model.State" cascade="save-update"></one-to-one>
 		<one-to-one name="place" class="model.Place" cascade="save-update"></one-to-one>
+		<list name="users" lazy="false">
+			<key column="idUserE" />
+			<list-index column="idEvent" />
+			<one-to-many class="model.User" />
+		</list>
 		<subclass name="model.FoodEvent" discriminator-value="FoodEvent">
-			<many-to-one name="typeFood" class="model.TypeFood"
-				cascade="save-update"  lazy="false" fetch="select"  ></many-to-one>
+			<one-to-one name="typeFood" class="model.TypeFood"
+				cascade="save-update" lazy="false" fetch="select"></one-to-one>
 		</subclass>
 		<subclass name="model.MovieEvent" discriminator-value="MovieEvent">
-			<many-to-one name="genere" class="model.GenderMovie"
-				cascade="save-update"  lazy="false" fetch="select"></many-to-one>
+			<one-to-one name="genere" class="model.GenderMovie"
+				cascade="save-update" lazy="false" fetch="select"></one-to-one>
 		</subclass>
 		<subclass name="model.MusicalEvent" discriminator-value="MusicalEvent">
-			<many-to-one name="genderMusical" class="model.GenderMusical"
-				cascade="save-update"  lazy="false" fetch="select" ></many-to-one>
+			<one-to-one name="genderMusical" class="model.GenderMusical"
+				cascade="save-update" lazy="false" fetch="select"></one-to-one>
 		</subclass>
 		<subclass name="model.OtherEvent" discriminator-value="OtherEvent">
-			<many-to-one name="otherLike" class="model.OtherLike"
-				cascade="save-update"  lazy="false" fetch="select" ></many-to-one>
+			<one-to-one name="otherLike" class="model.OtherLike"
+				cascade="save-update" lazy="false" fetch="select"></one-to-one>
 		</subclass>
-
 	</class>
 </hibernate-mapping>

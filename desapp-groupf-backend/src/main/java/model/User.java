@@ -6,21 +6,32 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@idUserU")
 public class User implements Observer, Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5279960171841695330L;
 	private Integer idUser;
 	private Profile profile;
-//	private HandlerEvent handlerEvent;
+	@Transient
+	private HandlerEvent handlerEvent;
 	private String name;
 	private String surname;
 	private String nik;
-//	private FriendHandler frienHandler;
+	@Transient
+	private FriendHandler frienHandler;
 	private List<String> messages = new ArrayList<String>();
 	private String mail;
+	private List<Event> eventsToattend = new ArrayList<Event>();
+
+	public User() {
+
+	}
+
 	public List<String> getMessages() {
 		return messages;
 	}
@@ -29,13 +40,13 @@ public class User implements Observer, Serializable {
 		this.messages = messages;
 	}
 
-//	public FriendHandler getFrienHandler() {
-//		return frienHandler;
-//	}
+	public FriendHandler friendHandrler() {
+		return frienHandler;
+	}
 
-//	public void setFrienHandler(FriendHandler frienHandler) {
-//		this.frienHandler = frienHandler;
-//	}
+	public void frienHandler(FriendHandler frienHandler) {
+		this.frienHandler = frienHandler;
+	}
 
 	public String getName() {
 		return name;
@@ -69,25 +80,30 @@ public class User implements Observer, Serializable {
 		this.profile = profile;
 	}
 
-//	public HandlerEvent getHandlerEvent() {
-//		return handlerEvent;
-//	}
+	public HandlerEvent eventHandler() {
+		return handlerEvent;
+	}
 
-//	public void setHandlerEvent(HandlerEvent handlerEvent) {
-//		this.handlerEvent = handlerEvent;
-//	}
+	public void eventHandler(HandlerEvent handlerEvent) {
+		this.handlerEvent = handlerEvent;
+	}
 
-//	public void invited(Event event) {
-//		this.getHandlerEvent().addPendingEvent(event);
-//		event.addObserver(this);
-//	}
+	public void invited(Event event) {
+		this.eventHandler().addPendingEvent(event);
+		event.addObserver(this);
+	}
 
-//	public void acceptEvent(Event event) {
-//		if (this.getHandlerEvent().getPendingEvents().contains(event)) {
-//			this.getHandlerEvent().acceptEvent(event);
-//			event.whereAddYou(this);
-//		}
-//	}
+	public void acceptEvent(Event event) {
+		if (this.eventHandler().getPendingEvents().contains(event)) {
+			this.eventHandler().acceptEvent(event);
+			event.whereAddYou(this);
+		}
+	}
+
+	public void attendEvent(Event event) {
+		this.getEventsToattend().add(event);
+		event.getUsers().add(this);
+	}
 
 	public void addFood(TypeFood food) {
 		this.getProfile().addFood(food);
@@ -131,5 +147,13 @@ public class User implements Observer, Serializable {
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+
+	public List<Event> getEventsToattend() {
+		return eventsToattend;
+	}
+
+	public void setEventsToattend(List<Event> eventsToattend) {
+		this.eventsToattend = eventsToattend;
 	}
 }

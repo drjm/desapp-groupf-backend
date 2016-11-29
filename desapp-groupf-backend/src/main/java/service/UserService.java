@@ -12,7 +12,13 @@ public class UserService extends GenericService<User> {
 	@Transactional
 	public User getUserByEmail(final String mail) {
 
-		return ((User)((UserRepository)this.getRepository()).getUserByEmailRepo(mail));
+		return ((User) ((UserRepository) this.getRepository()).getUserByEmailRepo(mail));
+	}
+
+	@Transactional
+	public User attendEvent(Integer idUser, Integer idEvent) {
+
+		return ((User) ((UserRepository) this.getRepository()).attendEvent(idUser, idEvent));
 	}
 
 }

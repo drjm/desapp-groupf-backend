@@ -10,14 +10,20 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import model.Event;
 import model.Place;
+import model.User;
+import service.EventService;
 import service.PlaceService;
+import service.UserService;
 
 @Path("/utils")
 
 public class UtilitiesRest {
 
 	private PlaceService placeService;
+	private UserService userService;
+	private EventService eventService;
 
 	public PlaceService getPlaceService() {
 		return placeService;
@@ -25,6 +31,22 @@ public class UtilitiesRest {
 
 	public void setPlaceService(PlaceService placeService) {
 		this.placeService = placeService;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	public EventService getEventService() {
+		return eventService;
+	}
+
+	public void setEventService(EventService eventService) {
+		this.eventService = eventService;
 	}
 
 	@GET
@@ -59,4 +81,23 @@ public class UtilitiesRest {
 
 		return Response.ok(place).build();
 	}
+
+	@POST
+	@Path("/attendEvent/{idUser}/{idEvent}")
+	@Produces("application/json")
+	public Response updateUser(final @PathParam("idUser") Integer idUser, final @PathParam("idEvent") Integer idEvent) {
+
+		User ret;
+		Event ret2;
+		try {
+
+			ret = this.getUserService().attendEvent(idUser, idEvent);
+			ret2 = this.getEventService().addUserToEvent(idEvent, idUser);
+
+		} catch (Exception e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+		return Response.ok("OK").build();
+	}
+
 }

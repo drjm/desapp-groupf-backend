@@ -4,11 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
-@XmlRootElement(name = "profile")
 public class Profile implements Serializable {
 
 	private static final long serialVersionUID = 1365365124943834617L;
