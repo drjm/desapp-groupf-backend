@@ -15,7 +15,7 @@ public class CreateDTOS {
 		userDTO.setSurname(user.getSurname());
 		userDTO.setProfile(user.getProfile());
 		userDTO.setNik(user.getNik());
-		userDTO.setName(user.getNik());
+		userDTO.setName(user.getName());
 		userDTO.setMyEvents(CreateDTOS.listEventDTO(user.getMyEvents()));
 		userDTO.setMessages(user.getMessages());
 		userDTO.setMail(user.getMail());
