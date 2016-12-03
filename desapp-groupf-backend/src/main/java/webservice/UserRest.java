@@ -31,7 +31,7 @@ public class UserRest {
 	@Produces("application/json")
 	public Response addUser(User user) {
 		this.getUserService().save(user);
-		return Response.ok(user).build();
+		return Response.ok(CreateDTOS.createUserDTOSinEventos(user)).build();
 	}
 
 	@GET
@@ -68,7 +68,7 @@ public class UserRest {
 		} catch (Exception e) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-		return Response.ok(ret).build();
+		return Response.ok(CreateDTOS.createUserDTO(ret)).build();
 
 	}
 
@@ -82,7 +82,7 @@ public class UserRest {
 		} catch (Exception e) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-		return Response.ok(ret).build();
+		return Response.ok(CreateDTOS.createUserDTO(ret)).build();
 	}
 
 	@POST
@@ -98,7 +98,7 @@ public class UserRest {
 		} catch (Exception e) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-		return Response.ok(ret).build();
+		return Response.ok(CreateDTOS.createUserDTO(ret)).build();
 	}
 
 	@POST
