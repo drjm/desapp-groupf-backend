@@ -47,4 +47,17 @@ public class UserRepository extends HibernateGenericDAO<User> implements Generic
 		return user;
 	}
 
+	public User addFriend(Integer idUser, Integer idFriend) {
+
+		Session session = this.getSessionFactory().getCurrentSession();
+		User user = this.findById(idUser);
+		User friend = this.findById(idFriend);
+
+		user.addFrien(friend);
+		session.update(friend);
+		session.update(user);
+		session.flush();
+		return user;
+	}
+
 }

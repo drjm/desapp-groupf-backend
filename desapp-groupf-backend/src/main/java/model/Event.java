@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-import org.codehaus.jackson.annotate.JsonBackReference;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -31,7 +30,6 @@ public class Event extends Observable {
 	private State state;
 	private String stateMessage;
 	private Place place;
-	@JsonBackReference
 	private List<User> users = new ArrayList<User>();
 
 	public Event(String statTime, String endTime, LocalDate fecha, String descripcion, Long price, Boolean alone,

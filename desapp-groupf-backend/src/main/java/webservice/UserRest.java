@@ -9,6 +9,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import dtos.CreateDTOS;
 import model.User;
 import service.UserService;
 
@@ -38,7 +39,7 @@ public class UserRest {
 	@Produces("application/json")
 	public Response Users() {
 
-		return Response.ok(this.getUserService().retriveAll()).build();
+		return Response.ok(CreateDTOS.listUserDTO(this.getUserService().retriveAll())).build();
 
 	}
 
@@ -107,13 +108,30 @@ public class UserRest {
 
 		User ret;
 		try {
-			
+
 			ret = this.getUserService().attendEvent(idUser, idEvent);
-			
+
 		} catch (Exception e) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-		return Response.ok(ret).build();
+		return Response.ok(CreateDTOS.createUserDTO(ret)).build();
+	}
+
+	@POST
+	@Path("/addFriend/{idUser}/{idFriend}")
+	@Produces("application/json")
+	public Response addFriend(final @PathParam("idUser") Integer idUser,
+			final @PathParam("idFriend") Integer idFriend) {
+
+		User ret;
+		try {
+
+			ret = this.getUserService().addFriend(idUser, idFriend);
+
+		} catch (Exception e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+		return Response.ok(CreateDTOS.createUserDTO(ret)).build();
 	}
 
 }

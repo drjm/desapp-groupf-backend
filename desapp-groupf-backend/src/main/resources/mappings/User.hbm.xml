@@ -22,6 +22,13 @@
 			<list-index column="idUser" />
 			<one-to-many class="model.Event" />
 		</list>
+		<list name="listFriends" lazy="false">
+			<key column="idFriendU" />
+			<list-index column="idUser" />
+           <many-to-many entity-name="model.User">
+                <column name="IDFriend" not-null="true" />
+            </many-to-many>
+		</list>
 	</class>
 </hibernate-mapping>
                                    

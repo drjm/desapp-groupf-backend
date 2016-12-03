@@ -28,6 +28,7 @@ public class User implements Observer, Serializable {
 	private String mail;
 	private List<Event> eventsToattend = new ArrayList<Event>();
 	private List<Event> myEvents = new ArrayList<Event>();
+	private List<User> listFriends = new ArrayList<User>();
 
 	public User() {
 
@@ -170,4 +171,18 @@ public class User implements Observer, Serializable {
 	public void setMyEvents(List<Event> myEvents) {
 		this.myEvents = myEvents;
 	}
+
+	public List<User> getListFriends() {
+		return listFriends;
+	}
+
+	public void setListFriends(List<User> listFriends) {
+		this.listFriends = listFriends;
+	}
+
+	public void addFrien(User friend) {
+		this.getListFriends().add(friend);
+		friend.getListFriends().add(this);
+	}
+
 }

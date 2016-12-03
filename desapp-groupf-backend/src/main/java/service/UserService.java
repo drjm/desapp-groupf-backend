@@ -21,4 +21,10 @@ public class UserService extends GenericService<User> {
 		return ((User) ((UserRepository) this.getRepository()).attendEvent(idUser, idEvent));
 	}
 
+	@Transactional
+	public User addFriend(Integer idUser, Integer idFriend) {
+
+		return ((User) ((UserRepository) this.getRepository()).addFriend(idUser, idFriend));
+	}
+
 }
