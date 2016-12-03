@@ -38,9 +38,22 @@ public class EventRepository extends HibernateGenericDAO<Event> implements Gener
 		event.addUser(user);
 		session.update(event);
 		session.flush();
-
-		System.out.println("AAAAAAAAAAAAAAAAA" + event.getUsers().size());
 		return event;
+
+	}
+
+	public void associateUserToEvent(Integer idEvent, Integer idUser) {
+
+		Session session = this.getSessionFactory().getCurrentSession();
+		Event event = this.findById(idEvent);
+		String hql = "FROM User U WHERE U.idUser = :idUser";
+		Query query = session.createQuery(hql);
+		query.setParameter("idUser", idUser);
+		User user = (User) query.list().get(0);
+		user.addToMyEvents(event);
+		session.update(user);
+		System.out.println("***************************" + user.getMyEvents().size() + "********************");
+		session.flush();
 
 	}
 

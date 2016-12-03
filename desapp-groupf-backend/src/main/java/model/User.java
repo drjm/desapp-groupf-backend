@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@idUserU")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idUserU")
 public class User implements Observer, Serializable {
 
 	private static final long serialVersionUID = -5279960171841695330L;
@@ -27,6 +27,7 @@ public class User implements Observer, Serializable {
 	private List<String> messages = new ArrayList<String>();
 	private String mail;
 	private List<Event> eventsToattend = new ArrayList<Event>();
+	private List<Event> myEvents = new ArrayList<Event>();
 
 	public User() {
 
@@ -155,5 +156,18 @@ public class User implements Observer, Serializable {
 
 	public void setEventsToattend(List<Event> eventsToattend) {
 		this.eventsToattend = eventsToattend;
+	}
+
+	public void addToMyEvents(Event event) {
+		this.getMyEvents().add(event);
+
+	}
+
+	public List<Event> getMyEvents() {
+		return myEvents;
+	}
+
+	public void setMyEvents(List<Event> myEvents) {
+		this.myEvents = myEvents;
 	}
 }

@@ -92,9 +92,17 @@ public class EventService extends GenericService<Event> implements Initialize {
 		this.getRepository().update(movieEvent4);
 		this.getRepository().update(movieEvent5);
 	}
+
 	@Transactional
 	public Event addUserToEvent(Integer idEvent, Integer idUser) {
 		return ((Event) ((EventRepository) this.getRepository()).attendEvent(idEvent, idUser));
+	}
+
+	@Transactional
+	public void associateUserToEvent(Integer idEvent, Integer idUser) {
+
+		((EventRepository) this.getRepository()).associateUserToEvent(idEvent, idUser);
+
 	}
 
 }

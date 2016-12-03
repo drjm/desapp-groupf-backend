@@ -6,10 +6,13 @@ import java.util.List;
 import java.util.Observable;
 
 import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idEventT")
 public class Event extends Observable {
 
@@ -166,6 +169,7 @@ public class Event extends Observable {
 
 	}
 
+	@JsonIgnore
 	public Boolean isAvaliable() {
 		return this.getState().isAvaliable();
 

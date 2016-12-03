@@ -10,7 +10,7 @@
         				http://www.springframework.org/schema/aop 
         				http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<bean name="aopLogging" class="aspects.AspectLogging" />
+	<!-- <bean name="aopLogging" class="aspects.AspectLogging" />
 
 	<aop:config>
 		<aop:aspect ref="aopLogging">
@@ -18,6 +18,8 @@
 			<aop:around method="tiempoPasado" pointcut-ref="pointcut" />
 		</aop:aspect>
 	</aop:config>
+	
+	-->
 
 
 </beans>

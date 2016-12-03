@@ -93,13 +93,13 @@ public class EventRest {
 	}
 
 	@POST
-	@Path("/addmovieevent")
+	@Path("/addmovieevent/{idUser}")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response addMovieEvent(MovieEvent event) {
+	public Response addMovieEvent(MovieEvent event, @PathParam("idUser") final Integer idUser) {
 
 		this.getEventService().save(event);
-
+		this.getEventService().associateUserToEvent(event.getIdEvent(), idUser);
 		return Response.ok(event).build();
 	}
 
