@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import dtos.CreateDTOS;
 import model.Event;
 import model.FoodEvent;
 import model.MovieEvent;
@@ -39,18 +40,7 @@ public class EventRest {
 	@Produces("application/json")
 	public Response events() {
 
-		// List<Event> ret = this.getEventService().retriveAll();
-		return Response.ok(this.getEventService().retriveAll()).build();
-
-	}
-
-	@GET
-	@Path("/eventsL")
-	@Produces("application/json")
-	public List<Event> eventsL() {
-
-		// List<Event> ret = this.getEventService().retriveAll();
-		return this.getEventService().retriveAll();
+		return Response.ok(CreateDTOS.listEventDTO(this.getEventService().retriveAll())).build();
 
 	}
 
@@ -78,7 +68,7 @@ public class EventRest {
 		} catch (Exception e) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-		return Response.ok(ret).build();
+		return Response.ok(CreateDTOS.createEventDTO(ret)).build();
 	}
 
 	@POST
