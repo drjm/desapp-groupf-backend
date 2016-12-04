@@ -34,6 +34,13 @@ public class User implements Observer, Serializable {
 
 	}
 
+	public User(String name, String surname, String nik, String mail) {
+		this.name = name;
+		this.surname = surname;
+		this.nik = nik;
+		this.mail = mail;
+	}
+
 	public List<String> getMessages() {
 		return messages;
 	}

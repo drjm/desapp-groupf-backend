@@ -32,9 +32,10 @@ public class Event extends Observable {
 	private Place place;
 	private List<User> users = new ArrayList<User>();
 
-	public Event(String statTime, String endTime, LocalDate fecha, String descripcion, Long price, Boolean alone,
-			Boolean inTwosome, Boolean inGroup, Integer cantPerson, Place placeP) {
+	public Event(String title, String statTime, String endTime, LocalDate fecha, String descripcion, Long price,
+			Boolean alone, Boolean inTwosome, Boolean inGroup, Integer cantPerson, Place placeP) {
 
+		this.title = title;
 		this.starTime = statTime;
 		this.endTime = endTime;
 		this.date = fecha;

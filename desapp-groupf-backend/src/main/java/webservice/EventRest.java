@@ -16,9 +16,13 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import dtos.CreateDTOS;
 import model.Event;
 import model.FoodEvent;
+import model.GenderMovie;
+import model.GenderMusical;
 import model.MovieEvent;
 import model.MusicalEvent;
 import model.OtherEvent;
+import model.OtherLike;
+import model.TypeFood;
 import service.EventService;
 
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -39,9 +43,7 @@ public class EventRest {
 	@Path("/events")
 	@Produces("application/json")
 	public Response events() {
-
 		return Response.ok(CreateDTOS.listEventDTO(this.getEventService().retriveAll())).build();
-
 	}
 
 	@DELETE
@@ -72,46 +74,58 @@ public class EventRest {
 	}
 
 	@POST
-	@Path("/addfoodevent")
+	@Path("/addfoodevent/{idUser}/{like}")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response addFoodEvent(FoodEvent event) {
+	public Response addFoodEvent(FoodEvent event, @PathParam("idUser") final Integer idUser,
+			@PathParam("like") final String like) {
 
-		this.getEventService().save(event);
-
-		return Response.ok(event).build();
-	}
-
-	@POST
-	@Path("/addmovieevent/{idUser}")
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Response addMovieEvent(MovieEvent event, @PathParam("idUser") final Integer idUser) {
-
+		TypeFood food = new TypeFood(like);
+		event.setTypeFood(food);
 		this.getEventService().save(event);
 		this.getEventService().associateUserToEvent(event.getIdEvent(), idUser);
 		return Response.ok(event).build();
 	}
 
 	@POST
-	@Path("/addmusicalevent")
+	@Path("/addmovieevent/{idUser}/{like}")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response addMusicalEvent(MusicalEvent event) {
+	public Response addMovieEvent(MovieEvent event, @PathParam("idUser") final Integer idUser,
+			@PathParam("like") final String like) {
 
+		GenderMovie movie = new GenderMovie(like);
+		event.setGenere(movie);
 		this.getEventService().save(event);
-
+		this.getEventService().associateUserToEvent(event.getIdEvent(), idUser);
 		return Response.ok(event).build();
 	}
 
 	@POST
-	@Path("/addotherevent")
+	@Path("/addmusicalevent/{idUser}/{like}")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response addOtherEvent(OtherEvent event) {
+	public Response addMusicalEvent(MusicalEvent event, @PathParam("idUser") final Integer idUser,
+			@PathParam("like") final String like) {
 
+		GenderMusical musical = new GenderMusical(like);
+		event.setGender(musical);
 		this.getEventService().save(event);
+		this.getEventService().associateUserToEvent(event.getIdEvent(), idUser);
+		return Response.ok(event).build();
+	}
 
+	@POST
+	@Path("/addotherevent/{idUser}/{Like}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response addOtherEvent(OtherEvent event, @PathParam("idUser") final Integer idUser,
+			@PathParam("like") final String like) {
+
+		OtherLike other = new OtherLike(like);
+		event.setOtherLike(other);
+		this.getEventService().save(event);
+		this.getEventService().associateUserToEvent(event.getIdEvent(), idUser);
 		return Response.ok(event).build();
 	}
 

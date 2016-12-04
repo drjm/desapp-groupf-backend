@@ -8,9 +8,10 @@ public class SaturNightEvent extends Event {
 
 	private List<Event> events;
 
-	public SaturNightEvent(String statTime, String endTime, LocalDate fecha, String descripcion, Long price, Boolean alone,
-			Boolean inTwosome, Boolean inGroup, Place place) {
-		super(statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null , place);
+	public SaturNightEvent(String statTime, String endTime, LocalDate fecha, String descripcion, Long price,
+			Boolean alone, Boolean inTwosome, Boolean inGroup, Place place) {
+		super("Sabado Toda La noche!", statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null,
+				place);
 		this.events = new ArrayList<Event>();
 	}
 
@@ -42,7 +43,7 @@ public class SaturNightEvent extends Event {
 	@Override
 	public void whereAddYou(User user) {
 		for (Event event : events) {
-		event.whereAddYou(user);
+			event.whereAddYou(user);
 		}
 	}
 

@@ -5,16 +5,17 @@ import java.time.LocalDate;
 public class MusicalEvent extends Event {
 
 	private GenderMusical genderMusical;
-	public MusicalEvent(GenderMusical gener, String statTime, String endTime, LocalDate fecha, String descripcion,
-			Long price, Boolean alone, Boolean inTwosome, Boolean inGroup, Place place) {
 
-		super(statTime, endTime, null, descripcion, price, alone, inTwosome, inGroup, null, place);
+	public MusicalEvent(String title, GenderMusical gener, String statTime, String endTime, LocalDate fecha,
+			String descripcion, Long price, Boolean alone, Boolean inTwosome, Boolean inGroup, Place place) {
+
+		super(title, statTime, endTime, null, descripcion, price, alone, inTwosome, inGroup, null, place);
 		this.genderMusical = gener;
 
 	}
 
 	public MusicalEvent() {
-		super(null, null, null, null, null, null, null, null, null,null);
+		super(null, null, null, null, null, null, null, null, null, null, null);
 
 	}
 
@@ -35,7 +36,6 @@ public class MusicalEvent extends Event {
 			ret = ret || gm.getNameGMusical().equals(this.getGender().getNameGMusical());
 		}
 		return ret;
-
 
 	}
 

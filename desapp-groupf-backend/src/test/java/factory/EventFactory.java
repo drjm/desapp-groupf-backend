@@ -14,24 +14,24 @@ public class EventFactory {
 
 	public static MusicalEvent eventMusicalGenderRock() {
 
-		MusicalEvent event = new MusicalEvent(new GenderMusical(MusicalGeneres.ROCK), null, null, null, null, null,
-				null, null, null, null);
+		MusicalEvent event = new MusicalEvent(null, new GenderMusical(MusicalGeneres.ROCK), null, null, null, null,
+				null, null, null, null, null);
 
 		return event;
 	}
 
 	public static MovieEvent eventMovieGenderAccion() {
 
-		MovieEvent event = new MovieEvent(new GenderMovie(MoviesGeneres.ACCION), null, null, null, null, null, null,
-				null, null, null);
+		MovieEvent event = new MovieEvent(null, new GenderMovie(MoviesGeneres.ACCION), null, null, null, null, null,
+				null, null, null, null);
 
 		return event;
 	}
 
 	public static FoodEvent eventFoodCarne() {
 
-		FoodEvent event = new FoodEvent(new TypeFood(FoodTypes.CARNE), null, null, null, null, null, null, null, null,
-				null);
+		FoodEvent event = new FoodEvent(null, new TypeFood(FoodTypes.CARNE), null, null, null, null, null, null, null,
+				null, null);
 
 		return event;
 	}

@@ -47,8 +47,8 @@ public class HandlerEvent {
 	public MusicalEvent createEventMusic(User user, LocalDate date, String startTime, Long price, String endTime,
 			String description, Boolean alone, Boolean inTwosome, Boolean inGroup, String gener) {
 
-		MusicalEvent musical = new MusicalEvent(new GenderMusical(gener), startTime, endTime, date, description, price,
-				alone, inTwosome, inGroup, null);
+		MusicalEvent musical = new MusicalEvent(null, new GenderMusical(gener), startTime, endTime, date, description,
+				price, alone, inTwosome, inGroup, null);
 
 		events.add(musical);
 
@@ -60,8 +60,8 @@ public class HandlerEvent {
 	public MovieEvent createEventMovie(User user, LocalDate date, String startTime, Long price, String endTime,
 			String description, Boolean alone, Boolean inTwosome, Boolean inGroup, String gener) {
 
-		MovieEvent movieEvent = new MovieEvent(new GenderMovie(gener), startTime, endTime, date, description, price,
-				alone, inTwosome, inGroup, null);
+		MovieEvent movieEvent = new MovieEvent(null, new GenderMovie(gener), startTime, endTime, date, description,
+				price, alone, inTwosome, inGroup, null);
 
 		events.add(movieEvent);
 
@@ -73,8 +73,8 @@ public class HandlerEvent {
 	public FoodEvent createEventFood(User user, LocalDate date, String startTime, Long price, String endTime,
 			String description, Boolean alone, Boolean inTwosome, Boolean inGroup, String gener) {
 
-		FoodEvent foodEvent = new FoodEvent(new TypeFood(gener), startTime, endTime, date, description, price, alone,
-				inTwosome, inGroup, null);
+		FoodEvent foodEvent = new FoodEvent(null, new TypeFood(gener), startTime, endTime, date, description, price,
+				alone, inTwosome, inGroup, null);
 
 		events.add(foodEvent);
 
@@ -86,7 +86,7 @@ public class HandlerEvent {
 	public OtherEvent createEventOther(User user, LocalDate date, String startTime, Long price, String endTime,
 			String description, Boolean alone, Boolean inTwosome, Boolean inGroup, String gener) {
 
-		OtherEvent otherEvent = new OtherEvent(new OtherLike(gener), startTime, endTime, date, description, price,
+		OtherEvent otherEvent = new OtherEvent(null, new OtherLike(gener), startTime, endTime, date, description, price,
 				alone, inTwosome, inGroup, null);
 
 		events.add(otherEvent);
