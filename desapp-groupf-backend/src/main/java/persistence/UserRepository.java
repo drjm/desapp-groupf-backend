@@ -41,6 +41,7 @@ public class UserRepository extends HibernateGenericDAO<User> implements Generic
 		query.setParameter("idEvent", idEvent);
 		Event event = (Event) query.list().get(0);
 		user.attendEvent(event);
+		event.addUser(user);
 		session.update(event);
 		session.update(user);
 		session.flush();

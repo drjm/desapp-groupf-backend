@@ -2,19 +2,11 @@ package model;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@SuppressWarnings("restriction")
-@XmlRootElement(name = "place")
 public class Place implements Serializable {
 
 	private static final long serialVersionUID = 9188790034869116102L;
-	@XmlElement
 	private Integer idPlace;
-	@XmlElement
 	private String name;
-	@XmlElement
 	private String address;
 
 	public Place() {

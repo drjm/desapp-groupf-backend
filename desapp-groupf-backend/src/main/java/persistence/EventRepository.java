@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import model.Event;
+import model.Profile;
 import model.User;
 
 public class EventRepository extends HibernateGenericDAO<Event> implements GenericRepository<Event> {
@@ -55,6 +56,11 @@ public class EventRepository extends HibernateGenericDAO<Event> implements Gener
 		System.out.println("***************************" + user.getMyEvents().size() + "********************");
 		session.flush();
 
+	}
+
+	public List<Event> getEventByProfile(Profile profile) {
+		//TODO
+		return null;
 	}
 
 }

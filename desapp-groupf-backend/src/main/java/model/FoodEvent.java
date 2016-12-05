@@ -6,8 +6,8 @@ public class FoodEvent extends Event {
 
 	private TypeFood typeFood;
 
-	public FoodEvent(String title,TypeFood type, String statTime, String endTime, LocalDate fecha, String descripcion, Long price,
-			Boolean alone, Boolean inTwosome, Boolean inGroup, Place place) {
+	public FoodEvent(String title, TypeFood type, String statTime, String endTime, LocalDate fecha, String descripcion,
+			Long price, Boolean alone, Boolean inTwosome, Boolean inGroup, Place place) {
 
 		super(title, statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null, place);
 
@@ -15,7 +15,7 @@ public class FoodEvent extends Event {
 	}
 
 	public FoodEvent() {
-		super(null,null, null, null, null, null, null, null, null, null, null);
+		super(null, null, null, null, null, null, null, null, null, null, null);
 	}
 
 	public TypeFood getTypeFood() {

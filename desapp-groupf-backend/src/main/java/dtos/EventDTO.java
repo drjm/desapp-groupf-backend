@@ -25,6 +25,7 @@ public class EventDTO {
 	private String stateMessage;
 	private Place place;
 	private List<UserDTO> users = new ArrayList<UserDTO>();
+	private String dateString;
 
 	public Integer getIdEvent() {
 		return idEvent;
@@ -152,6 +153,14 @@ public class EventDTO {
 
 	public void setUsers(List<UserDTO> users) {
 		this.users = users;
+	}
+
+	public String getDateString() {
+		return dateString;
+	}
+
+	public void setDateString(String dateString) {
+		this.dateString = dateString;
 	}
 
 }

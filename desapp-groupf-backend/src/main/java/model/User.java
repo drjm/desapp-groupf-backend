@@ -8,10 +8,6 @@ import java.util.Observer;
 
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idUserU")
 public class User implements Observer, Serializable {
 
 	private static final long serialVersionUID = -5279960171841695330L;
@@ -111,7 +107,7 @@ public class User implements Observer, Serializable {
 
 	public void attendEvent(Event event) {
 		this.getEventsToattend().add(event);
-		event.getUsers().add(this);
+	
 	}
 
 	public void addFood(TypeFood food) {

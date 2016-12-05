@@ -9,7 +9,7 @@ public class MusicalEvent extends Event {
 	public MusicalEvent(String title, GenderMusical gener, String statTime, String endTime, LocalDate fecha,
 			String descripcion, Long price, Boolean alone, Boolean inTwosome, Boolean inGroup, Place place) {
 
-		super(title, statTime, endTime, null, descripcion, price, alone, inTwosome, inGroup, null, place);
+		super(title, statTime, endTime, fecha, descripcion, price, alone, inTwosome, inGroup, null, place);
 		this.genderMusical = gener;
 
 	}

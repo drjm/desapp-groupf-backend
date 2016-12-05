@@ -33,7 +33,7 @@ public class CreateDTOS {
 		userDTO.setSurname(user.getSurname());
 		userDTO.setProfile(user.getProfile());
 		userDTO.setNik(user.getNik());
-		userDTO.setName(user.getNik());
+		userDTO.setName(user.getName());
 		userDTO.setMyEvents(null);
 		userDTO.setMessages(user.getMessages());
 		userDTO.setMail(user.getMail());
@@ -49,7 +49,9 @@ public class CreateDTOS {
 		List<UserDTO> dtos = new ArrayList<UserDTO>();
 
 		for (User u : users) {
-			dtos.add(CreateDTOS.createUserDTOSinEventos(u));
+			if (u != null)
+				dtos.add(CreateDTOS.createUserDTOSinEventos(u));
+
 		}
 
 		return dtos;
@@ -119,6 +121,7 @@ public class CreateDTOS {
 		dto.setState(event.getState());
 		dto.setTitle(event.getTitle());
 		dto.setUsers(CreateDTOS.createUserDtoSinEvent(event.getUsers()));
+		dto.setDateString(event.getDateString());
 
 		return dto;
 

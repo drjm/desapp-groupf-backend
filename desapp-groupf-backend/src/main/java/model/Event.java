@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+import javax.persistence.Transient;
+
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idEventT")
 public class Event extends Observable {
 
 	private Integer idEvent;
@@ -31,8 +29,10 @@ public class Event extends Observable {
 	private String stateMessage;
 	private Place place;
 	private List<User> users = new ArrayList<User>();
+	@Transient
+	private String dateString;
 
-	public Event(String title, String statTime, String endTime, LocalDate fecha, String descripcion, Long price,
+	protected Event(String title, String statTime, String endTime, LocalDate fecha, String descripcion, Long price,
 			Boolean alone, Boolean inTwosome, Boolean inGroup, Integer cantPerson, Place placeP) {
 
 		this.title = title;
@@ -238,6 +238,14 @@ public class Event extends Observable {
 
 	public void addUser(User user) {
 		this.getUsers().add(user);
+	}
+
+	public String getDateString() {
+		return dateString;
+	}
+
+	public void setDateString(String dateString) {
+		this.dateString = dateString;
 	}
 
 }

@@ -14,6 +14,7 @@ import model.MovieEvent;
 import model.MoviesGeneres;
 import model.MusicalEvent;
 import model.Place;
+import model.Profile;
 import model.User;
 import persistence.EventRepository;
 
@@ -125,6 +126,11 @@ public class EventService extends GenericService<Event> implements Initialize {
 	public void associateUserToEvent(Integer idEvent, Integer idUser) {
 
 		((EventRepository) this.getRepository()).associateUserToEvent(idEvent, idUser);
+
+	}
+
+	public List<Event> getEventByProfile(Profile profile) {
+		return ((EventRepository) this.getRepository()).getEventByProfile(profile);
 
 	}
 
