@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-import javax.persistence.Transient;
-
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -29,7 +27,6 @@ public class Event extends Observable {
 	private String stateMessage;
 	private Place place;
 	private List<User> users = new ArrayList<User>();
-	@Transient
 	private String dateString;
 
 	protected Event(String title, String statTime, String endTime, LocalDate fecha, String descripcion, Long price,
@@ -48,6 +45,7 @@ public class Event extends Observable {
 		this.cantPerson = 10;
 		this.place = placeP;
 		this.setStateMessage("Tiene un nuevo evento asignado:" + descripcion);
+		this.dateString ="12-12-2016";
 	}
 
 	public List<User> getUsers() {

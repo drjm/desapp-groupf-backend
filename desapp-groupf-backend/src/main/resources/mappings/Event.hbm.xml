@@ -19,6 +19,7 @@
 		<property name="inGruop" />
 		<property name="stateMessage" />
 		<property name="cantPerson" />
+		<property name="dateString" />
 		<one-to-one name="state" class="model.State" cascade="save-update"></one-to-one>
 		<many-to-one name="place" column ="placeEvent" class="model.Place" lazy="false" cascade="save-update">
 		
