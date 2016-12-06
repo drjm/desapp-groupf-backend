@@ -22,7 +22,6 @@ import model.MovieEvent;
 import model.MusicalEvent;
 import model.OtherEvent;
 import model.OtherLike;
-import model.Profile;
 import model.TypeFood;
 import service.EventService;
 
@@ -96,9 +95,13 @@ public class EventRest {
 
 		GenderMovie movie = new GenderMovie(like);
 		event.setGenere(movie);
-		this.getEventService().save(event);
-		this.getEventService().associateUserToEvent(event.getIdEvent(), idUser);
-		return Response.ok(event).build();
+		MovieEvent me = new MovieEvent(event.getTitle(), movie, event.getStarTime(), event.getEndTime(),
+				event.getDate(), event.getDescription(), event.getPrice(), event.getAlone(), event.getInTwosome(),
+				event.getInGruop(), event.getPlace());
+		me.setDateString(event.getDateString());
+		this.getEventService().save(me);
+		this.getEventService().associateUserToEvent(me.getIdEvent(), idUser);
+		return Response.ok(me).build();
 	}
 
 	@POST
@@ -144,19 +147,65 @@ public class EventRest {
 		return Response.ok(CreateDTOS.listEventDTO(events)).build();
 	}
 
-	@GET
-	@Path("/filter/sugerencias")
+	@POST
+	@Path("/filter/sugerenciasMusical")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response getEventByProfile(Profile profile) {
+	public Response getEventByLikesMusical(List<String> likes) {
 		List<Event> events;
 		try {
-			events = this.getEventService().getEventByProfile(profile);
+			events = this.getEventService().getEventByMusicalLike(likes);
 		} catch (Exception e) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 
 		}
-		return Response.ok(events).build();
+		return Response.ok(CreateDTOS.listEventDTO(events)).build();
+	}
+
+	@POST
+	@Path("/filter/sugerenciasMovies")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response getEventByLikesMovies(List<String> likes) {
+		List<Event> events;
+		try {
+			events = this.getEventService().getEventByMovieLike(likes);
+
+		} catch (Exception e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+
+		}
+		return Response.ok(CreateDTOS.listEventDTO(events)).build();
+	}
+
+	@POST
+	@Path("/filter/sugerenciasFood")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response getEventByLikeFood(List<String> likes) {
+		List<Event> events;
+		try {
+			events = this.getEventService().getEventByFoodLike(likes);
+		} catch (Exception e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+
+		}
+		return Response.ok(CreateDTOS.listEventDTO(events)).build();
+	}
+
+	@POST
+	@Path("/filter/sugerenciasOther")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response getEventByOther(List<String> likes) {
+		List<Event> events;
+		try {
+			events = this.getEventService().getEventByOtherLike(likes);
+		} catch (Exception e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+
+		}
+		return Response.ok(CreateDTOS.listEventDTO(events)).build();
 	}
 
 }

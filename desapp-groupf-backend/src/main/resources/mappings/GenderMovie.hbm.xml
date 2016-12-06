@@ -4,8 +4,8 @@
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
 	<class name="model.GenderMovie">
-		<id column="ID" name="id">
-			<generator class="native" />
+		<id column="IDGM" name="id">
+			<generator class="increment" />
 		</id>
 		<property name="name" />
 	</class>

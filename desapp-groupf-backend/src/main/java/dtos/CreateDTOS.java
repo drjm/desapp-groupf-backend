@@ -97,7 +97,8 @@ public class CreateDTOS {
 		List<EventDTO> dtos = new ArrayList<EventDTO>();
 
 		for (Event e : events) {
-			dtos.add(CreateDTOS.createEventDTO(e));
+			if (e != null)
+				dtos.add(CreateDTOS.createEventDTO(e));
 		}
 
 		return dtos;

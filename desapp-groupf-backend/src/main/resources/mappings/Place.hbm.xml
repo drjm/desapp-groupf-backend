@@ -5,7 +5,7 @@
 	default-cascade="save-update">
 	<class name="model.Place">
 		<id column="IDPlace" name="idPlace">
-			<generator class="native" />
+			<generator class="increment" />
 		</id>
 		<property name="name" />
 		<property name="address" />

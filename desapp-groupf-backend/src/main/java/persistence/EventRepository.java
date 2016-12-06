@@ -53,14 +53,44 @@ public class EventRepository extends HibernateGenericDAO<Event> implements Gener
 		User user = (User) query.list().get(0);
 		user.addToMyEvents(event);
 		session.update(user);
-		System.out.println("***************************" + user.getMyEvents().size() + "********************");
 		session.flush();
 
 	}
 
-	public List<Event> getEventByProfile(Profile profile) {
-		//TODO
-		return null;
+	public List<Event> getEventByMusicalLike(List<String> likes) {
+		Session session = this.getSessionFactory().getCurrentSession();
+		String hql = "FROM Event E WHERE E.genderMusical.nameGMusical in (:likes)";
+		Query query = session.createQuery(hql);
+		query.setParameterList("likes", likes);
+		List<Event> events = (List<Event>) query.list();
+		return events;
+	}
+
+	public List<Event> getEventMovieLike(List<String> likes) {
+		Session session = this.getSessionFactory().getCurrentSession();
+		String hql = "FROM Event E WHERE E.genere.name in (:likes) ";
+		Query query = session.createQuery(hql);
+		query.setParameterList("likes", likes);
+		List<Event> events = (List<Event>) query.list();
+		return events;
+	}
+
+	public List<Event> getEventByFoodLike(List<String> likes) {
+		Session session = this.getSessionFactory().getCurrentSession();
+		String hql = "FROM Event E WHERE E.typeFood.name in (:likes) ";
+		Query query = session.createQuery(hql);
+		query.setParameterList("likes", likes);
+		List<Event> events = (List<Event>) query.list();
+		return events;
+	}
+
+	public List<Event> getEventByOtherLikes(List<String> likes) {
+		Session session = this.getSessionFactory().getCurrentSession();
+		String hql = "FROM Event E WHERE E.otherLike.name in (:likes) ";
+		Query query = session.createQuery(hql);
+		query.setParameterList("likes", likes);
+		List<Event> events = (List<Event>) query.list();
+		return events;
 	}
 
 }

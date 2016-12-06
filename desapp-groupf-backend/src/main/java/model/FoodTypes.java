@@ -6,6 +6,7 @@ public class FoodTypes {
 
 	public static String VERDURAS = "VERDURAS"; 
 
+	public static String ASADO = "ASADO"; 
 
 	
 }

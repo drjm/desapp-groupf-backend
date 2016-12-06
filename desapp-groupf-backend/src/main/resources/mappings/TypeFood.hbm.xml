@@ -5,8 +5,8 @@
 	default-cascade="save-update">
 	<class name="model.TypeFood" discriminator-value="FoodEvent">
 		<id column="ID" name="id">
-			<generator class="native" />
+			<generator class="increment" />
 		</id>
-		<property name="nameFood" />
+		<property name="name" not-null="true" />
 	</class>
 </hibernate-mapping>

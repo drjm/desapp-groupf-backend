@@ -8,13 +8,18 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.Event;
+import model.FoodEvent;
+import model.FoodTypes;
 import model.GenderMovie;
 import model.GenderMusical;
 import model.MovieEvent;
 import model.MoviesGeneres;
 import model.MusicalEvent;
+import model.OtherEvent;
+import model.OtherLike;
 import model.Place;
 import model.Profile;
+import model.TypeFood;
 import model.User;
 import persistence.EventRepository;
 
@@ -46,7 +51,6 @@ public class EventService extends GenericService<Event> implements Initialize {
 		eventMusical1.getUsers().get(0).getEventsToattend().add(eventMusical1);
 		eventMusical1.getUsers().get(0).setProfile(new Profile());
 
-		
 		MusicalEvent eventMusical2 = new MusicalEvent("Recital Indio Solari", new GenderMusical("ROCK"), "21:00:00",
 				"01:00:00", LocalDate.of(2016, Month.DECEMBER, 9), "Recital en vivo de el Indio Solari", new Long(200),
 				new Boolean(true), new Boolean(true), new Boolean(true), place1);
@@ -54,7 +58,6 @@ public class EventService extends GenericService<Event> implements Initialize {
 		eventMusical2.getUsers().get(0).getEventsToattend().add(eventMusical2);
 		eventMusical2.getUsers().get(0).setProfile(new Profile());
 
-		
 		MusicalEvent eventMusical3 = new MusicalEvent("Recital Indio Solari", new GenderMusical("ROCK"), "21:00:00",
 				"01:00:00", LocalDate.of(2016, Month.DECEMBER, 9), "Recital en vivo de el Indio Solari", new Long(200),
 				new Boolean(true), new Boolean(true), new Boolean(true), place2);
@@ -62,7 +65,6 @@ public class EventService extends GenericService<Event> implements Initialize {
 		eventMusical3.getUsers().get(0).getEventsToattend().add(eventMusical3);
 		eventMusical3.getUsers().get(0).setProfile(new Profile());
 
-		
 		this.getRepository().save(eventMusical1);
 		this.getRepository().save(eventMusical2);
 		this.getRepository().save(eventMusical3);
@@ -102,7 +104,6 @@ public class EventService extends GenericService<Event> implements Initialize {
 		movieEvent3.getUsers().get(0).getEventsToattend().add(movieEvent3);
 		movieEvent3.getUsers().get(0).setProfile(new Profile());
 
-		
 		MovieEvent movieEvent4 = new MovieEvent("Estreno de la semana", new GenderMovie(MoviesGeneres.CIENCIAFICCION),
 				"21:00:00", "01:00:00", LocalDate.of(2017, Month.MARCH, 10), "Kong: Skull Island", new Long(125),
 				new Boolean(true), new Boolean(true), new Boolean(true), null);
@@ -110,7 +111,6 @@ public class EventService extends GenericService<Event> implements Initialize {
 		movieEvent4.getUsers().get(0).getEventsToattend().add(movieEvent4);
 		movieEvent4.getUsers().get(0).setProfile(new Profile());
 
-		
 		MovieEvent movieEvent5 = new MovieEvent("Estreno de la semana", new GenderMovie(MoviesGeneres.ACCION),
 				"21:00:00", "01:00:00", LocalDate.of(2017, Month.DECEMBER, 15), "Fast 8", new Long(125),
 				new Boolean(true), new Boolean(true), new Boolean(true), null);
@@ -118,7 +118,6 @@ public class EventService extends GenericService<Event> implements Initialize {
 		movieEvent5.getUsers().get(0).getEventsToattend().add(movieEvent5);
 		movieEvent5.getUsers().get(0).setProfile(new Profile());
 
-		
 		this.getRepository().save(movieEvent3);
 		this.getRepository().save(movieEvent4);
 		this.getRepository().save(movieEvent5);
@@ -129,6 +128,35 @@ public class EventService extends GenericService<Event> implements Initialize {
 		this.getRepository().update(movieEvent3);
 		this.getRepository().update(movieEvent4);
 		this.getRepository().update(movieEvent5);
+
+		Place restaurant = new Place("La Cabaña", "J.M. Rosales 1234");
+		Place restaurant1 = new Place("El Pato", "Corrientes 345");
+		Place restaurant2 = new Place("La Casona", "Lavalle 234");
+
+		FoodEvent eventFood1 = new FoodEvent("Cena Show", new TypeFood(FoodTypes.ASADO), "22:00:00", "01:00:00",
+				LocalDate.of(2017, Month.DECEMBER, 15), "Cena Show artistas Comicos invitados", new Long(300),
+				new Boolean(true), new Boolean(true), new Boolean(true), restaurant);
+		eventFood1.setCantPerson(200);
+
+		FoodEvent eventFood2 = new FoodEvent("Cena Show", new TypeFood(FoodTypes.ASADO), "22:00:00", "01:00:00",
+				LocalDate.of(2017, Month.DECEMBER, 15), "Cena Show artistas Comicos invitados", new Long(300),
+				new Boolean(true), new Boolean(true), new Boolean(true), restaurant1);
+		eventFood2.setCantPerson(200);
+
+		FoodEvent eventFood3 = new FoodEvent("Cena Show", new TypeFood(FoodTypes.ASADO), "22:00:00", "01:00:00",
+				LocalDate.of(2017, Month.DECEMBER, 15), "Cena Show artistas Comicos invitados", new Long(300),
+				new Boolean(true), new Boolean(true), new Boolean(true), restaurant2);
+		eventFood2.setCantPerson(200);
+
+		this.getRepository().save(eventFood2);
+		this.getRepository().save(eventFood1);
+		this.getRepository().save(eventFood3);
+
+		OtherEvent otherEvent = new OtherEvent("Feria de las colectividades", new OtherLike("FERIA"), "10:00:00",
+				"22:00:00", LocalDate.of(2017, Month.DECEMBER, 15),
+				"Fria de las colectividades, mas de 150 stands de todas las nacionalidades", new Long(0),
+				new Boolean(true), new Boolean(true), new Boolean(true), place1);
+		this.getRepository().save(otherEvent);
 	}
 
 	@Transactional
@@ -143,9 +171,25 @@ public class EventService extends GenericService<Event> implements Initialize {
 
 	}
 
-	public List<Event> getEventByProfile(Profile profile) {
-		return ((EventRepository) this.getRepository()).getEventByProfile(profile);
+	@Transactional
+	public List<Event> getEventByMusicalLike(List<String> likes) {
+		return ((EventRepository) this.getRepository()).getEventByMusicalLike(likes);
+	}
 
+	@Transactional
+	public List<Event> getEventByMovieLike(List<String> likes) {
+		return ((EventRepository) this.getRepository()).getEventMovieLike(likes);
+	}
+
+	@Transactional
+	public List<Event> getEventByFoodLike(List<String> likes) {
+		return ((EventRepository) this.getRepository()).getEventByFoodLike(likes);
+	}
+
+	@Transactional
+	public List<Event> getEventByOtherLike(List<String> likes) {
+
+		return ((EventRepository) this.getRepository()).getEventByOtherLikes(likes);
 	}
 
 }

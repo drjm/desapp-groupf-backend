@@ -3,10 +3,10 @@ package model;
 public class TypeFood implements Like {
 
 	private Integer id;
-	private String nameFood;
+	private String name;
 
 	public TypeFood(String name) {
-		this.nameFood = name;
+		this.name = name;
 	}
 
 	public TypeFood() {
@@ -22,11 +22,11 @@ public class TypeFood implements Like {
 	}
 
 	public String getName() {
-		return nameFood;
+		return name;
 	}
 
 	public void setName(String name) {
-		this.nameFood = name;
+		this.name = name;
 	}
 
 	public boolean isEquals(String name) {

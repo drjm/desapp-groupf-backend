@@ -5,7 +5,7 @@
 	default-cascade="save-update">
 	<class name="model.Profile">
 		<id column="IDProfile" name="idProfile">
-			<generator class="native" />
+			<generator class="increment" />
 		</id>
 		<property name="nik" />
 		<property name="conveyance" />

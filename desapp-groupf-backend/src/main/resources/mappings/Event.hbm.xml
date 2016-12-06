@@ -5,7 +5,7 @@
 	default-cascade="save-update">
 	<class name="model.Event" discriminator-value="Event">
 		<id column="IDEvent" name="idEvent">
-			<generator class="native" />
+			<generator class="increment" />
 		</id>
 		<discriminator column="clase" type="string" />
 		<property name="title" />
@@ -30,20 +30,20 @@
 			<one-to-many class="model.User" />
 		</list>
 		<subclass name="model.FoodEvent" discriminator-value="FoodEvent">
-			<one-to-one name="typeFood" class="model.TypeFood"
-				cascade="save-update" lazy="false" fetch="select"></one-to-one>
+			<many-to-one name="typeFood" class="model.TypeFood"
+				cascade="save-update" lazy="false" fetch="select"></many-to-one>
 		</subclass>
 		<subclass name="model.MovieEvent" discriminator-value="MovieEvent">
-			<one-to-one name="genere" class="model.GenderMovie"
-				cascade="save-update" lazy="false" fetch="select"></one-to-one>
+			<many-to-one name="genere" class="model.GenderMovie"
+				cascade="save-update" lazy="false" fetch="select"></many-to-one>
 		</subclass>
 		<subclass name="model.MusicalEvent" discriminator-value="MusicalEvent">
-			<one-to-one name="genderMusical" class="model.GenderMusical"
-				cascade="save-update" lazy="false" fetch="select"></one-to-one>
+			<many-to-one name="genderMusical" class="model.GenderMusical"
+				cascade="save-update" lazy="false" fetch="select"></many-to-one>
 		</subclass>
 		<subclass name="model.OtherEvent" discriminator-value="OtherEvent">
-			<one-to-one name="otherLike" class="model.OtherLike"
-				cascade="save-update" lazy="false" fetch="select"></one-to-one>
+			<many-to-one name="otherLike" class="model.OtherLike"
+				cascade="save-update" lazy="false" fetch="select"></many-to-one>
 		</subclass>
 	</class>
 </hibernate-mapping>
