@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.codehaus.jackson.annotate.JsonProperty;
 
 public class Profile implements Serializable {
@@ -20,10 +19,10 @@ public class Profile implements Serializable {
 	private List<TypeFood> foodTastes = new ArrayList<TypeFood>();
 	@JsonProperty("otherLikes")
 	private List<OtherLike> otherLikes = new ArrayList<OtherLike>();
-	private Long amountMax;
-	private String conveyance;
-	private String startTime;
-	private String nik;
+	private Long amountMax = new Long(0);
+	private String conveyance = "";
+	private String startTime = "";
+	private String nik = "";
 
 	public Profile() {
 

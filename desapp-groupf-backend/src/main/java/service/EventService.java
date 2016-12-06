@@ -44,19 +44,25 @@ public class EventService extends GenericService<Event> implements Initialize {
 
 		eventMusical1.addUser(new User("Pedro", "Gomez", "pedro@test", "pedro@test"));
 		eventMusical1.getUsers().get(0).getEventsToattend().add(eventMusical1);
+		eventMusical1.getUsers().get(0).setProfile(new Profile());
 
+		
 		MusicalEvent eventMusical2 = new MusicalEvent("Recital Indio Solari", new GenderMusical("ROCK"), "21:00:00",
 				"01:00:00", LocalDate.of(2016, Month.DECEMBER, 9), "Recital en vivo de el Indio Solari", new Long(200),
 				new Boolean(true), new Boolean(true), new Boolean(true), place1);
 		eventMusical2.addUser(new User("Juan", "Perez", "juan@test", "juan@test"));
 		eventMusical2.getUsers().get(0).getEventsToattend().add(eventMusical2);
+		eventMusical2.getUsers().get(0).setProfile(new Profile());
 
+		
 		MusicalEvent eventMusical3 = new MusicalEvent("Recital Indio Solari", new GenderMusical("ROCK"), "21:00:00",
 				"01:00:00", LocalDate.of(2016, Month.DECEMBER, 9), "Recital en vivo de el Indio Solari", new Long(200),
 				new Boolean(true), new Boolean(true), new Boolean(true), place2);
 		eventMusical3.addUser(new User("Roberto", "Rolon", "robert@test", "robert@test"));
 		eventMusical3.getUsers().get(0).getEventsToattend().add(eventMusical3);
+		eventMusical3.getUsers().get(0).setProfile(new Profile());
 
+		
 		this.getRepository().save(eventMusical1);
 		this.getRepository().save(eventMusical2);
 		this.getRepository().save(eventMusical3);
@@ -70,18 +76,20 @@ public class EventService extends GenericService<Event> implements Initialize {
 				new Long(125), new Boolean(true), new Boolean(true), new Boolean(true), cine1);
 		movieEvent.addUser(new User("Jorge", "Perez", "jorge@test", "jorge@test"));
 		movieEvent.getUsers().get(0).getEventsToattend().add(movieEvent);
+		movieEvent.getUsers().get(0).setProfile(new Profile());
 
 		MovieEvent movieEvent1 = new MovieEvent("Estreno de la semana", new GenderMovie(MoviesGeneres.CIENCIAFICCION),
 				"21:00:00", "01:00:00", LocalDate.of(2017, Month.MARCH, 10), "Kong: Skull Island", new Long(125),
 				new Boolean(true), new Boolean(true), new Boolean(true), cine2);
 		movieEvent1.addUser(new User("Sofia", "Lucero", "sof@test", "sof@test"));
 		movieEvent1.getUsers().get(0).getEventsToattend().add(movieEvent1);
-
+		movieEvent1.getUsers().get(0).setProfile(new Profile());
 		MovieEvent movieEvent2 = new MovieEvent("Estreno de la semana", new GenderMovie(MoviesGeneres.ACCION),
 				"21:00:00", "01:00:00", LocalDate.of(2017, Month.DECEMBER, 15), "Fast 8", new Long(125),
 				new Boolean(true), new Boolean(true), new Boolean(true), cine3);
 		movieEvent2.addUser(new User("Pato", "Sara", "sara@test", "sara@test"));
 		movieEvent2.getUsers().get(0).getEventsToattend().add(movieEvent2);
+		movieEvent2.getUsers().get(0).setProfile(new Profile());
 
 		this.getRepository().save(movieEvent);
 		this.getRepository().save(movieEvent1);
@@ -92,19 +100,25 @@ public class EventService extends GenericService<Event> implements Initialize {
 				new Long(125), new Boolean(true), new Boolean(true), new Boolean(true), null);
 		movieEvent3.addUser(new User("PEPE", "SOTO", "pepe@test", "pepe@test"));
 		movieEvent3.getUsers().get(0).getEventsToattend().add(movieEvent3);
+		movieEvent3.getUsers().get(0).setProfile(new Profile());
 
+		
 		MovieEvent movieEvent4 = new MovieEvent("Estreno de la semana", new GenderMovie(MoviesGeneres.CIENCIAFICCION),
 				"21:00:00", "01:00:00", LocalDate.of(2017, Month.MARCH, 10), "Kong: Skull Island", new Long(125),
 				new Boolean(true), new Boolean(true), new Boolean(true), null);
 		movieEvent4.addUser(new User("maka", "test", "test@test", "test@test"));
 		movieEvent4.getUsers().get(0).getEventsToattend().add(movieEvent4);
+		movieEvent4.getUsers().get(0).setProfile(new Profile());
 
+		
 		MovieEvent movieEvent5 = new MovieEvent("Estreno de la semana", new GenderMovie(MoviesGeneres.ACCION),
 				"21:00:00", "01:00:00", LocalDate.of(2017, Month.DECEMBER, 15), "Fast 8", new Long(125),
 				new Boolean(true), new Boolean(true), new Boolean(true), null);
 		movieEvent5.addUser(new User("USer test", "test", "test@test", "test@test"));
 		movieEvent5.getUsers().get(0).getEventsToattend().add(movieEvent5);
+		movieEvent5.getUsers().get(0).setProfile(new Profile());
 
+		
 		this.getRepository().save(movieEvent3);
 		this.getRepository().save(movieEvent4);
 		this.getRepository().save(movieEvent5);
